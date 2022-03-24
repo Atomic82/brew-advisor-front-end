@@ -6,6 +6,8 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import BreweryList from './pages/BreweryList/BreweryList'
+import BreweryDetails from './pages/BreweryDetails/BreweryDetails'
 import * as authService from './services/authService'
 
 const App = () => {
@@ -27,6 +29,14 @@ const App = () => {
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
+        <Route
+          path="/breweries"
+          element={<BreweryList />}
+        />
+        <Route
+          path="/brewery"
+          element={<BreweryDetails />}
+        />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
