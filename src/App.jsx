@@ -8,6 +8,8 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import BreweryList from './pages/BreweryList/BreweryList'
 import BreweryDetails from './pages/BreweryDetails/BreweryDetails'
+import EventList from './pages/EventList/EventList'
+import EventDetails from './pages/EventDetails/EventDetails'
 import * as authService from './services/authService'
 
 const App = () => {
@@ -36,6 +38,14 @@ const App = () => {
         <Route
           path="/brewery"
           element={<BreweryDetails />}
+        />
+        <Route
+          path="/events"
+          element={<EventList />}
+        />
+        <Route
+          path="/event"
+          element={<EventDetails />}
         />
         <Route
           path="/signup"
