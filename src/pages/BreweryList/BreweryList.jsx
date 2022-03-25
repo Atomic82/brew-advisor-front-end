@@ -9,8 +9,7 @@ const BreweryList = () => {
   useEffect(() => {
     breweryService.getAll()
       .then(allBreweries => {
-        console.log(allBreweries)
-        setBreweries(allBreweries)
+        setBreweries(allBreweries.businesses)
       })
   }, [])
 
