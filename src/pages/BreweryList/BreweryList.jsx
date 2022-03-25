@@ -17,7 +17,9 @@ const BreweryList = () => {
     <>
       <h1>I am the BreweryList</h1>
       <div>
-        <Brewery />
+        {breweries.map(brewery => (
+          <Brewery key={brewery.id} brewery={brewery} />
+        ))}
       </div>
     </>
   );
