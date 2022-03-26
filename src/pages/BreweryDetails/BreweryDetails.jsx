@@ -1,13 +1,26 @@
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const BreweryDetails = () => {
+  const location = useLocation()
+  const brewery = location.state.brewery
+
   return (
     <>
-      <h1>The Brewery</h1>
-      <h2>Wow</h2>
-      <Link to='/'>Go to landing</Link>
+      <div>
+        <h1>{brewery.name}</h1>
+        <img src={brewery.image_url} alt={brewery.alias} />
+        <h3>Rating: {brewery.rating}</h3>
+        <div>
+          <p>{brewery.location.display_address[0]}</p>
+          <p>{brewery.location.display_address[1]}</p>
+        </div>
+        <p>{brewery.display_phone}</p>
+        <a href={brewery.url} target="_blank" rel="noreferrer">On Yelp</a>
+      </div>
+      <Link to='/breweries'>Go back to Breweries</Link>
     </>
   );
 }
- 
+
 export default BreweryDetails;
