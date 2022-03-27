@@ -5,7 +5,8 @@ import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
+import ProfileList from './pages/ProfileList/ProfileList'
+import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import BreweryList from './pages/BreweryList/BreweryList'
 import BreweryDetails from './pages/BreweryDetails/BreweryDetails'
@@ -58,8 +59,9 @@ const App = () => {
         />
         <Route
           path="/profiles"
-          element={user ? <Profiles /> : <Navigate to="/login" />}
+          element={user ? <ProfileList /> : <Navigate to="/login" />}
         />
+        <Route path="/profile" element={<ProfileDetails />}/>
         <Route
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
