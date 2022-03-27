@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import './App.css';
 import NavBar from './components/NavBar/NavBar'
@@ -14,8 +14,18 @@ import EventList from './pages/EventList/EventList'
 import EventDetails from './pages/EventDetails/EventDetails'
 import NewEvent from './pages/NewEvent/NewEvent';
 import * as authService from './services/authService'
+import * as breweryService from './services/breweryService'
 
 const App = () => {
+  const [breweries, setBreweries] = useState([])
+
+  useEffect(() => {
+    breweryService.getAll()
+      .then(allBreweries => {
+        setBreweries(allBreweries.businesses)
+      })
+  }, [])
+
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
@@ -36,10 +46,10 @@ const App = () => {
         <Route path="/" element={<Landing user={user} />} />
         <Route
           path="/breweries"
-          element={<BreweryList />}
+          element={<BreweryList breweries={breweries} />}
         />
         <Route
-          path="/brewery"
+          path="/brewery/:id"
           element={<BreweryDetails />}
         />
         <Route

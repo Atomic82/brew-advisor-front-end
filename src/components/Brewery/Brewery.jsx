@@ -4,12 +4,12 @@ const Brewery = ({ brewery }) => {
   return (
     <>
       <Link
-        to="/brewery"
+        to={"/brewery/" + brewery.id}
         state={{ brewery }}
         className='brewery-link'
       >
         <div>
-          <img src={brewery.image_url} alt="" style={{"max-height":"400px",}}/>
+          <img src={brewery.image_url} alt="" style={{"maxHeight":"400px",}}/>
           <p>
             Go to {brewery.name}
           </p>
