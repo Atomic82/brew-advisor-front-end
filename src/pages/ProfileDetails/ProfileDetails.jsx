@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import * as profileService from '../../services/profileService'
+import { Link } from 'react-router-dom'
 import Profile from '../../components/Profile/Profile'
+
 
 const ProfileDetails = (props) => {
 
