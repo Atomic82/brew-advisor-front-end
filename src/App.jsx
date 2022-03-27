@@ -5,7 +5,7 @@ import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
-import ProfileList from './pages/ProfileList/ProfileList'
+import Profiles from './pages/Profiles/Profiles'
 import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import BreweryList from './pages/BreweryList/BreweryList'
@@ -29,6 +29,8 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
+  const [profile, setProfile] = useState({})
+
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -37,6 +39,10 @@ const App = () => {
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
+  }
+
+  const handleClick = (profile) => {
+    setProfile(profile)
   }
 
   return (
@@ -74,9 +80,9 @@ const App = () => {
         />
         <Route
           path="/profiles"
-          element={user ? <ProfileList /> : <Navigate to="/login" />}
+          element={user ? <Profiles handleClick={handleClick}/> : <Navigate to="/login" />}
         />
-        <Route path="/profile" element={<ProfileDetails />}/>
+        <Route path="/profile" element={<ProfileDetails profile={profile} />}/>
         <Route
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
