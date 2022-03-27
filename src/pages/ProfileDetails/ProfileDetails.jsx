@@ -2,19 +2,17 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import * as profileService from '../../services/profileService'
+import Profile from '../../components/Profile/Profile'
 
-const ProfileDetails = () => {
-  const [profileData, setProfileData] = useState([])
-  let location = useLocation()
+const ProfileDetails = (props) => {
+
   
-  useEffect(() => {
-    profileService.getProfile()
-    .then(profileData => setProfileData)
-  }, [])
   return ( 
     <>
-    <h1>Hi! See the details of this profile</h1>
-    <Link to="/profiles" />
+    <div>
+      <Profile key={props.profile.id} profile={props.profile} />
+      <Link to="/profiles">Back to all profiles</Link>
+    </div>
     </>
    );
 }
