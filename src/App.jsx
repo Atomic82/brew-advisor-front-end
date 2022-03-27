@@ -12,6 +12,7 @@ import BreweryList from './pages/BreweryList/BreweryList'
 import BreweryDetails from './pages/BreweryDetails/BreweryDetails'
 import EventList from './pages/EventList/EventList'
 import EventDetails from './pages/EventDetails/EventDetails'
+import NewEvent from './pages/NewEvent/NewEvent';
 import * as authService from './services/authService'
 
 const App = () => {
@@ -48,6 +49,10 @@ const App = () => {
         <Route
           path="/event"
           element={<EventDetails />}
+        />
+        <Route
+          path="/new"
+          element={<NewEvent />}
         />
         <Route
           path="/signup"

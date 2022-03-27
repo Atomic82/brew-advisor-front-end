@@ -12,6 +12,7 @@ const NavBar = ({ user, handleLogout }) => {
             <li><Link to="/changePassword">Change Password</Link></li>
             <li><Link to="/breweries">Breweries</Link></li>
             <li><Link to="/events">Events</Link></li>
+            <li><Link to="/new">Make a new Event?</Link></li>
           </ul>
         </nav>
       :
@@ -19,6 +20,7 @@ const NavBar = ({ user, handleLogout }) => {
           <ul>
             <li><Link to="/login">Log In</Link></li>
             <li><Link to="/signup">Sign Up</Link></li>
+            <li><Link to="/breweries">Breweries</Link></li>
           </ul>
         </nav>
       }
