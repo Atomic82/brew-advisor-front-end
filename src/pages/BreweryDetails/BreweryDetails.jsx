@@ -18,11 +18,12 @@ const BreweryDetails = () => {
         </div>
         <p>{brewery.display_phone}</p>
         <a href={brewery.url} target="_blank" rel="noreferrer">On Yelp</a>
-        <div>
+        
+        {/* <div>
             {brewery.reviews.map(review => {
               <ReviewCard />
             })}
-        </div>
+        </div> */}
         
       </div>
       <Link to='/breweries'>Go back to Breweries</Link>
