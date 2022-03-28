@@ -104,9 +104,8 @@ const App = () => {
           element={<BreweryList breweries={breweries} />}
         />
         <Route
-          path="/brewery/:id"
-          element={<BreweryDetails handleAddReview={handleAddReview}
-          reviews={reviews} />}
+          path="/breweries/:id"
+          element={<BreweryDetails handleAddReview={handleAddReview} reviews={reviews} />}
         />
         <Route
           path="/events"

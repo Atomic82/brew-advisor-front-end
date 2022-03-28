@@ -21,7 +21,7 @@ const NewReview = ({ props }) => {
 
   return ( 
     <>
-      <h1>Your Review</h1>
+      <h2>Your Review</h2>
       <div>
       <form onSubmit={handleSubmit} autoComplete='off' ref={formElement}>
         <label htmlFor="comment">

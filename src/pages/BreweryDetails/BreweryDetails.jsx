@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import NewReview from '../../components/NewReview/NewReview'
+import ReviewCard from "../../components/ReviewCard/ReviewCard";
 
 
 const BreweryDetails = () => {
@@ -18,9 +19,12 @@ const BreweryDetails = () => {
           {brewery.location.display_address[1]}</p>
         </div>
         <p>{brewery.display_phone}</p>
-        <div>
+        <div className="add-review">
           <NewReview />  
         </div> 
+        <div className="reviews">
+          <ReviewCard />
+        </div>
         <a href={brewery.url} target="_blank" rel="noreferrer">On Yelp</a>
         
       </div>
