@@ -16,14 +16,12 @@ import NewEvent from './pages/NewEvent/NewEvent';
 import * as authService from './services/authService'
 import * as breweryService from './services/breweryService'
 import * as eventService from './services/eventService'
+import * as reviewService from './services/reviewService'
 import EditEvent from './pages/EditEvent/EditEvent';
 
 const App = () => {
   const [breweries, setBreweries] = useState([])
   const [events, setEvents] = useState([])
-  const [user, setUser] = useState(authService.getUser())
-  const [profile, setProfile] = useState({})
-  const navigate = useNavigate()
   
 
   useEffect(() => {
@@ -33,6 +31,10 @@ const App = () => {
       })
   }, [])
   
+  
+  
+  const [user, setUser] = useState(authService.getUser())
+  const navigate = useNavigate()
   useEffect(() => {
     if(user) {
       eventService.getAll()
@@ -41,7 +43,9 @@ const App = () => {
         })
     }
   }, [user])
-
+  
+  const [profile, setProfile] = useState({})
+  const [reviews, setReviews] = useState({})
   const handleNewEvent = newEventData => {
     eventService.create(newEventData)
     .then(newEvent => {
@@ -82,6 +86,13 @@ const App = () => {
   const handleClick = (profile) => {
     setProfile(profile)
   }
+  
+  const handleAddReview = (newReviewData) => {
+    reviewService.create(newReviewData)
+    .then(newReview => {
+      setReviews([...reviews, newReview])
+    })
+  }
 
   return (
     <>
@@ -93,8 +104,9 @@ const App = () => {
           element={<BreweryList breweries={breweries} />}
         />
         <Route
-          path="/breweries/:id"
-          element={<BreweryDetails />}
+          path="/brewery/:id"
+          element={<BreweryDetails handleAddReview={handleAddReview}
+          reviews={reviews} />}
         />
         <Route
           path="/events"
@@ -129,6 +141,7 @@ const App = () => {
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
         />
+        
       </Routes>
     </>
   )
