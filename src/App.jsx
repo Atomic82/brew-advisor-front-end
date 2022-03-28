@@ -28,6 +28,13 @@ const App = () => {
       })
   }, [])
 
+  useEffect(() => {
+    eventService.getAll()
+      .then(allEvents => {
+        setEvents(allEvents)
+      })
+  }, [])
+
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
@@ -36,7 +43,7 @@ const App = () => {
   const handleNewEvent = async newEventData => {
     const newEvent = await eventService.create(newEventData)
     setEvents([...events, newEvent])
-    // navigate('/events')
+    navigate('/')
   }
 
   const handleLogout = () => {
@@ -68,10 +75,10 @@ const App = () => {
         />
         <Route
           path="/events"
-          element={<EventList />}
+          element={<EventList events={events}/>}
         />
         <Route
-          path="/event"
+          path="/event/:id"
           element={<EventDetails />}
         />
         <Route

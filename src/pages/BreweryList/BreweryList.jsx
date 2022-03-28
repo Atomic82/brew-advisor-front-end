@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import * as breweryService from '../../services/breweryService'
 import Brewery from "../../components/Brewery/Brewery";
 
 
