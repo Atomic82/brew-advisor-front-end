@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 const NewEvent = (props) => {
   const [formData, setFormData] = useState({ //Edit this to reflect the event model in the backend if things are added/removed to it
     name: '',
-    brewery: '',
+    // brewery: '',
     timeDate: '',
   })
   const [validForm, setValidForm] = useState(false)
@@ -17,10 +17,10 @@ const NewEvent = (props) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
-	const handleSubmit = evt => {
+	const handleSubmit = async evt => {
 		evt.preventDefault()
     console.log(formData)
-		props.handleNewEvent(formData)
+    await props.handleNewEvent(formData)
 	}
 
   return (
@@ -38,18 +38,18 @@ const NewEvent = (props) => {
             required
           />
         </div>
-        <div>
-          <label htmlFor="brewery-input">Which brewery do you want to go to?</label>
+        {/* <div> */}
+          {/* <label htmlFor="brewery-input">Which brewery do you want to go to?</label> */}
           {/* final version will be used a select input that has all the breweries listed */}
-          <input
+          {/* <input
             type="text"
             id='brewery-input'
             name='brewery'
             value={formData.brewery}
             onChange={handleChange}
             required
-          />
-        </div>
+          /> */}
+        {/* </div> */}
         <div>
           <label htmlFor="timeDate-input">When do you want to schedule this event?</label>
           <input
