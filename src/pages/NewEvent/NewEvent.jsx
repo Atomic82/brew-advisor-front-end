@@ -5,11 +5,58 @@ const NewEvent = (props) => {
     brewery: '',
     timeDate: '',
   })
+  const [validForm, setValidForm] = useState(false)
+  const formElement = useRef()
 
-  // form is going to be sending the owner(whoever made the event) as well
+	useEffect(() => {
+		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+	}, [formData])
+
+  const handleChange = evt => {
+		setFormData({ ...formData, [evt.target.name]: evt.target.value })
+	}
+
+	const handleSubmit = evt => {
+		evt.preventDefault()
+    props.handleNewEvent(formData)
+	}
+
   return (
     <>
-      <h1>This is where a new event form will be.</h1>
+      <h1>Schedule an Event</h1>
+      <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="brewery-input">Which brewery do you want to go to?</label>
+          {/* final version will be used a select input that has all the breweries listed */}
+          <input 
+            type="text"
+            id='brewery-input'
+            name='brewery'
+            value={formData.brewery}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="timeDate-input">When do you want to schedule this event?</label>
+          <input 
+            type='datetime-local'
+            id='timeDate-input'
+            name='timeDate'
+            value={formData.timeDate}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <button
+            type='submit'
+            disabled={!validForm}
+          >
+            Schedule Event
+          </button>
+        </div>
+      </form>
     </>
   );
 }

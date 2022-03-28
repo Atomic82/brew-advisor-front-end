@@ -18,6 +18,7 @@ import * as breweryService from './services/breweryService'
 
 const App = () => {
   const [breweries, setBreweries] = useState([])
+  const [events, setEvents] = useState([])
 
   useEffect(() => {
     breweryService.getAll()
@@ -30,6 +31,10 @@ const App = () => {
   const navigate = useNavigate()
 
   const [profile, setProfile] = useState({})
+
+  const handleNewEvent = newEventData => {
+    setEvents([...events, newEventData])
+  }
 
   const handleLogout = () => {
     authService.logout()
@@ -68,7 +73,7 @@ const App = () => {
         />
         <Route
           path="/new"
-          element={<NewEvent />}
+          element={<NewEvent handleNewEvent={handleNewEvent}/>}
         />
         <Route
           path="/signup"
