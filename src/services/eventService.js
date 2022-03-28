@@ -35,11 +35,48 @@ async function create(event) {
 }
 
 function getAll() {
-  return fetch(`${BASE_URL}`)
+  return fetch(BASE_URL, {
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
     .then(res => res.json())
+}
+
+function deleteOne(id) {
+  return fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+  })
+    .then(res => res.json())
+}
+
+async function update(event) {
+  try {
+    console.log(event)
+    const res = await fetch(`${BASE_URL}/${event._id}`, {
+      method: 'PUT',
+      headers: new Headers({
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-type': 'application/json'
+      }),
+      body: JSON.stringify(event),
+    })
+    const json = await res.json()
+    console.log(JSON.stringify(event))
+    if (json.err) {
+      throw new Error(json.err)
+    }
+  } catch (err) {
+    throw err
+  }
 }
 
 export {
   create,
-  getAll
+  getAll,
+  deleteOne,
+  update
 }

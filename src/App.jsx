@@ -20,6 +20,10 @@ import * as eventService from './services/eventService'
 const App = () => {
   const [breweries, setBreweries] = useState([])
   const [events, setEvents] = useState([])
+  const [user, setUser] = useState(authService.getUser())
+  const [profile, setProfile] = useState({})
+  const navigate = useNavigate()
+  
 
   useEffect(() => {
     breweryService.getAll()
@@ -27,23 +31,25 @@ const App = () => {
         setBreweries(allBreweries.businesses)
       })
   }, [])
-
+  
   useEffect(() => {
-    eventService.getAll()
-      .then(allEvents => {
-        setEvents(allEvents)
-      })
-  }, [])
-
-  const [user, setUser] = useState(authService.getUser())
-  const navigate = useNavigate()
-
-  const [profile, setProfile] = useState({})
+    if(user) {
+      eventService.getAll()
+        .then(allEvents => {
+          setEvents(allEvents)
+        })
+    }
+  }, [user])
 
   const handleNewEvent = async newEventData => {
     const newEvent = await eventService.create(newEventData)
     setEvents([...events, newEvent])
     navigate('/')
+  }
+
+  const handleDeleteEvent = id => {
+    eventService.deleteOne(id)
+      .then(deletedEvent => setEvents(events.filter(event => event._id !== deletedEvent._id)))
   }
 
   const handleLogout = () => {
@@ -79,7 +85,7 @@ const App = () => {
         />
         <Route
           path="/event/:id"
-          element={<EventDetails />}
+          element={<EventDetails handleDeleteEvent={handleDeleteEvent} user={user} />}
         />
         <Route
           path="/new"
