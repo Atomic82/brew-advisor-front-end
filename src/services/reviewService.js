@@ -9,7 +9,7 @@ function create(review) {
       'Authorization': `Bearer ${tokenService.getToken()}`,
       'Content-type': 'application/json'
     },
-    body: review
+    body: JSON.stringify(review)
   })
   .then(res => res.json())
 }

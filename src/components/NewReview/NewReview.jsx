@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
-const NewReview = (props) => {
+const NewReview = ({ props }) => {
   const formElement = useRef()
   const [reviewFormData, setReviewFormData] = useState({})
   const [validForm, setValidForm] = useState(false)
@@ -19,24 +19,23 @@ const NewReview = (props) => {
     props.handleAddReview(reviewFormData)
   }
 
-
-  
   return ( 
     <>
-      <h1>My $0.02</h1>
+      <h1>Your Review</h1>
       <div>
       <form onSubmit={handleSubmit} autoComplete='off' ref={formElement}>
-        <h2>
-          User name goes here
-        </h2>
-        <h3>
-          Brewery goes here
-        </h3>
         <label htmlFor="comment">
           Feedback:
         </label>
         <textarea value={reviewFormData.comment} onChange={handleChange} />
-        
+        <div className="add-review">
+          <button
+            type='submit'
+            disabled={!validForm}
+          >
+            Add Review
+          </button>
+        </div>
       </form>
 
       </div>

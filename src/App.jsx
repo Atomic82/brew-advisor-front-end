@@ -35,7 +35,7 @@ const App = () => {
   const navigate = useNavigate()
 
   const [profile, setProfile] = useState({})
-  const [reviews, setReviews] = useState([])
+  const [reviews, setReviews] = useState({})
 
   const handleNewEvent = async newEventData => {
     const newEvent = await eventService.create(newEventData)
