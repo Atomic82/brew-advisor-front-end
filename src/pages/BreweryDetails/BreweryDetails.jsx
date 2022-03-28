@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import ReviewCard from "../../components/ReviewCard/ReviewCard"; 
 
 const BreweryDetails = () => {
   const location = useLocation()
@@ -17,6 +18,12 @@ const BreweryDetails = () => {
         </div>
         <p>{brewery.display_phone}</p>
         <a href={brewery.url} target="_blank" rel="noreferrer">On Yelp</a>
+        <div>
+            {brewery.reviews.map(review => {
+              <ReviewCard />
+            })}
+        </div>
+        
       </div>
       <Link to='/breweries'>Go back to Breweries</Link>
     </>
