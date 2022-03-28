@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import NewReview from '../../components/NewReview/NewReview'
 
 
 const BreweryDetails = () => {
   const location = useLocation()
   const brewery = location.state.brewery
-  
 
   return (
     <>
@@ -19,7 +19,7 @@ const BreweryDetails = () => {
         </div>
         <p>{brewery.display_phone}</p>
         <div>
-          <button>Add Review</button>  
+          <NewReview />  
         </div> 
         <a href={brewery.url} target="_blank" rel="noreferrer">On Yelp</a>
         
