@@ -10,12 +10,14 @@ import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import BreweryList from './pages/BreweryList/BreweryList'
 import BreweryDetails from './pages/BreweryDetails/BreweryDetails'
+
 import EventList from './pages/EventList/EventList'
 import EventDetails from './pages/EventDetails/EventDetails'
 import NewEvent from './pages/NewEvent/NewEvent';
 import * as authService from './services/authService'
 import * as breweryService from './services/breweryService'
 import * as eventService from './services/eventService'
+import * as reviewService from './services/reviewService'
 
 const App = () => {
   const [breweries, setBreweries] = useState([])
@@ -28,10 +30,12 @@ const App = () => {
       })
   }, [])
 
+
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
   const [profile, setProfile] = useState({})
+  const [reviews, setReviews] = useState([])
 
   const handleNewEvent = async newEventData => {
     const newEvent = await eventService.create(newEventData)
@@ -52,6 +56,13 @@ const App = () => {
   const handleClick = (profile) => {
     setProfile(profile)
   }
+  
+  const handleAddReview = (newReviewData) => {
+    reviewService.create(newReviewData)
+    .then(newReview => {
+      setReviews([...reviews, newReview])
+    })
+  }
 
   return (
     <>
@@ -64,7 +75,8 @@ const App = () => {
         />
         <Route
           path="/brewery/:id"
-          element={<BreweryDetails />}
+          element={<BreweryDetails handleAddReview={handleAddReview}
+          reviews={reviews} />}
         />
         <Route
           path="/events"
@@ -95,6 +107,10 @@ const App = () => {
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
         />
+        {/* <Route 
+          path='/addReview'
+          element={<AddReview handleAddReview={handleAddReview} />}
+           /> */}
       </Routes>
     </>
   )

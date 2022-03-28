@@ -4,8 +4,12 @@ const ReviewCard = (props) => {
   
   return ( 
     <div className='review-card'>
-      <h2>{props.review.owner}</h2>
-      <p>{props.review.comment}</p>
+      {props.brewery.reviews.length ?
+        <p>Here is a review</p>
+        :
+        <p>No reviews listed yet</p>
+      }
+      
     </div>
    );
 }
