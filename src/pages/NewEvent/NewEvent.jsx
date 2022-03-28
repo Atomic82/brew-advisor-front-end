@@ -2,23 +2,25 @@ import { useState, useRef, useEffect } from 'react'
 
 const NewEvent = (props) => {
   const [formData, setFormData] = useState({ //Edit this to reflect the event model in the backend if things are added/removed to it
+    name: '',
     brewery: '',
     timeDate: '',
   })
   const [validForm, setValidForm] = useState(false)
+  
   const formElement = useRef()
-
-	useEffect(() => {
-		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
-	}, [formData])
+  useEffect(() => {
+    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+  }, [formData])
 
   const handleChange = evt => {
-		setFormData({ ...formData, [evt.target.name]: evt.target.value })
-	}
+    setFormData({ ...formData, [evt.target.name]: evt.target.value })
+  }
 
 	const handleSubmit = evt => {
 		evt.preventDefault()
-    props.handleNewEvent(formData)
+    console.log(formData)
+		props.handleNewEvent(formData)
 	}
 
   return (
@@ -26,9 +28,20 @@ const NewEvent = (props) => {
       <h1>Schedule an Event</h1>
       <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
         <div>
+          <label htmlFor="name-input">Name Your Event</label>
+          <input
+            type="text"
+            id='name-input'
+            name='name'
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
           <label htmlFor="brewery-input">Which brewery do you want to go to?</label>
           {/* final version will be used a select input that has all the breweries listed */}
-          <input 
+          <input
             type="text"
             id='brewery-input'
             name='brewery'
@@ -39,7 +52,7 @@ const NewEvent = (props) => {
         </div>
         <div>
           <label htmlFor="timeDate-input">When do you want to schedule this event?</label>
-          <input 
+          <input
             type='datetime-local'
             id='timeDate-input'
             name='timeDate'

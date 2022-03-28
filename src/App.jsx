@@ -15,6 +15,7 @@ import EventDetails from './pages/EventDetails/EventDetails'
 import NewEvent from './pages/NewEvent/NewEvent';
 import * as authService from './services/authService'
 import * as breweryService from './services/breweryService'
+import * as eventService from './services/eventService'
 
 const App = () => {
   const [breweries, setBreweries] = useState([])
@@ -32,8 +33,10 @@ const App = () => {
 
   const [profile, setProfile] = useState({})
 
-  const handleNewEvent = newEventData => {
-    setEvents([...events, newEventData])
+  const handleNewEvent = async newEventData => {
+    const newEvent = await eventService.create(newEventData)
+    setEvents([...events, newEvent])
+    // navigate('/events')
   }
 
   const handleLogout = () => {
