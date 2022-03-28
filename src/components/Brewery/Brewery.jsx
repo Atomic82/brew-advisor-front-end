@@ -4,7 +4,7 @@ const Brewery = ({ brewery }) => {
   return (
     <>
       <Link
-        to={"/brewery/" + brewery.id}
+        to={"/breweries/" + brewery.id}
         state={{ brewery }}
         className='brewery-link'
       >

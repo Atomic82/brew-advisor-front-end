@@ -15,7 +15,6 @@ const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/events`
 
 async function create(event) {
   try {
-    console.log(event)
     const res = await fetch(BASE_URL, {
       method: 'POST',
       headers: new Headers({
@@ -24,11 +23,7 @@ async function create(event) {
       }),
       body: JSON.stringify(event),
     })
-    const json = await res.json()
-    console.log(JSON.stringify(event))
-    if (json.err) {
-      throw new Error(json.err)
-    }
+    return res.json()
   } catch (err) {
     throw err
   }
@@ -55,7 +50,6 @@ function deleteOne(id) {
 
 async function update(event) {
   try {
-    console.log(event)
     const res = await fetch(`${BASE_URL}/${event._id}`, {
       method: 'PUT',
       headers: new Headers({
@@ -64,11 +58,7 @@ async function update(event) {
       }),
       body: JSON.stringify(event),
     })
-    const json = await res.json()
-    console.log(JSON.stringify(event))
-    if (json.err) {
-      throw new Error(json.err)
-    }
+    return res.json()
   } catch (err) {
     throw err
   }

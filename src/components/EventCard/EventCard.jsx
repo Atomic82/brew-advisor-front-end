@@ -4,7 +4,7 @@ const Event = ({ event }) => {
   return (
     <>
     <Link 
-      to={"/event/" + event._id}
+      to={"/events/" + event._id}
       state={{ event }}
       className='event-link'
     >

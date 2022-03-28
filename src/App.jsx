@@ -16,6 +16,7 @@ import NewEvent from './pages/NewEvent/NewEvent';
 import * as authService from './services/authService'
 import * as breweryService from './services/breweryService'
 import * as eventService from './services/eventService'
+import EditEvent from './pages/EditEvent/EditEvent';
 
 const App = () => {
   const [breweries, setBreweries] = useState([])
@@ -41,15 +42,31 @@ const App = () => {
     }
   }, [user])
 
-  const handleNewEvent = async newEventData => {
-    const newEvent = await eventService.create(newEventData)
-    setEvents([...events, newEvent])
-    navigate('/')
+  const handleNewEvent = newEventData => {
+    eventService.create(newEventData)
+    .then(newEvent => {
+      console.log(newEvent)
+      setEvents([...events, newEvent])
+      navigate('/')
+    })
   }
 
   const handleDeleteEvent = id => {
     eventService.deleteOne(id)
-      .then(deletedEvent => setEvents(events.filter(event => event._id !== deletedEvent._id)))
+      .then(deletedEvent => {
+        setEvents(events.filter(event => event._id !== deletedEvent._id))
+        navigate('/events')
+      })
+  }
+
+  const handleUpdateEvent = updatedEventData => {
+    eventService.update(updatedEventData)
+      .then(updatedEvent => {
+        console.log(updatedEvent)
+        const newEventsArray = events.map(event => event._id === updatedEvent._id ? updatedEvent : event)
+        setEvents(newEventsArray)
+        navigate('/events')
+      })
   }
 
   const handleLogout = () => {
@@ -76,7 +93,7 @@ const App = () => {
           element={<BreweryList breweries={breweries} />}
         />
         <Route
-          path="/brewery/:id"
+          path="/breweries/:id"
           element={<BreweryDetails />}
         />
         <Route
@@ -84,12 +101,16 @@ const App = () => {
           element={<EventList events={events}/>}
         />
         <Route
-          path="/event/:id"
+          path="/events/:id"
           element={<EventDetails handleDeleteEvent={handleDeleteEvent} user={user} />}
         />
         <Route
           path="/new"
           element={<NewEvent handleNewEvent={handleNewEvent}/>}
+        />
+        <Route
+          path="/edit"
+          element={<EditEvent handleUpdateEvent={handleUpdateEvent}/>}
         />
         <Route
           path="/signup"

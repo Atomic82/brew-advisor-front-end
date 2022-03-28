@@ -15,7 +15,7 @@ const EventDetails = ({ handleDeleteEvent, user }) => {
         <div className="edit-delete-container">
           <Link
             to='/edit'
-            state={event}
+            state={{event}}
           >
             Edit the event
           </Link>
