@@ -15,12 +15,12 @@ const NewReview = (props) => {
   const handleChange= evt => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
   }
-  const handleSubmit = evt => {
+  const handleSubmit = async evt => {
     evt.preventDefault()
     const reviewFormData = new FormData()
     reviewFormData.append('comment', formData.comment)
     console.log(formData)
-    props.handleAddReview(formData)
+    await props.handleAddReview(reviewFormData)
   }
 
   return ( 

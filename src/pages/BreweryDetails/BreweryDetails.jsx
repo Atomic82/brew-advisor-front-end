@@ -4,7 +4,7 @@ import NewReview from '../../components/NewReview/NewReview'
 import ReviewCard from "../../components/ReviewCard/ReviewCard";
 
 
-const BreweryDetails = () => {
+const BreweryDetails = ({ handleAddReview }) => {
   const location = useLocation()
   const brewery = location.state.brewery
 
@@ -20,7 +20,7 @@ const BreweryDetails = () => {
         </div>
         <p>{brewery.display_phone}</p>
         <div className="add-review">
-          <NewReview />  
+          <NewReview handleAddReview={handleAddReview} />  
         </div> 
         <div className="reviews">
           <ReviewCard />
