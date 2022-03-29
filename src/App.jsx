@@ -13,6 +13,7 @@ import BreweryDetails from './pages/BreweryDetails/BreweryDetails'
 import EventList from './pages/EventList/EventList'
 import EventDetails from './pages/EventDetails/EventDetails'
 import NewEvent from './pages/NewEvent/NewEvent';
+import NewReview from './components/NewReview/NewReview'
 import * as authService from './services/authService'
 import * as breweryService from './services/breweryService'
 import * as eventService from './services/eventService'
