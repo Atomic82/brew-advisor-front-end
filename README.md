@@ -1,6 +1,6 @@
 # 🍺 BrewAdvisor 🍻
 
-View the back end of the app here: 
+[View the our app's Backend](https://github.com/RohanPNaher/brew-advisor-back-end)
 
 # Screenshots
 Wireframe:

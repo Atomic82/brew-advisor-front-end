@@ -6,8 +6,12 @@ function getAll() {
     .then(res => res.json())
 }
 
-
+function getOneBreweryById(breweryId) {
+  return fetch(`${BASE_URL}/api/api/${breweryId}`)
+  .then(res => res.json())
+}
 
 export {
-  getAll
+  getAll,
+  getOneBreweryById
 }
