@@ -1,33 +1,43 @@
 import { useState, useEffect, useRef } from 'react'
 
-const NewReview = ({ props }) => {
+const NewReview = (props) => {
   const formElement = useRef()
-  const [reviewFormData, setReviewFormData] = useState({})
+  const [formData, setFormData] = useState({
+    comment: '',
+    brewery: props.brewery.id,
+    owner: props.user
+  })
   const [validForm, setValidForm] = useState(false)
-
+  
   useEffect(() => {
     formElement.current.checkValidity() ?
     setValidForm(true) : setValidForm(false)
-  }, [reviewFormData])
+  }, [formData])
 
   const handleChange= evt => {
-    setReviewFormData({...reviewFormData, [evt.target.name]: evt.target.value})
+    setFormData({...formData, [evt.target.name]: evt.target.value})
   }
-  const handleSubmit = evt => {
+  const handleSubmit = async evt => {
     evt.preventDefault()
-    console.log(reviewFormData)
-    props.handleAddReview(reviewFormData)
+    console.log(formData)
+    await props.handleAddReview(formData)
   }
 
   return ( 
     <>
-      <h1>Your Review</h1>
+      <h2>Your Review</h2>
       <div>
       <form onSubmit={handleSubmit} autoComplete='off' ref={formElement}>
         <label htmlFor="comment">
           Feedback:
         </label>
-        <textarea value={reviewFormData.comment} onChange={handleChange} />
+        <textarea
+          id='comment-input'
+          name='comment' 
+          value={formData.comment} 
+          onChange={handleChange}
+          required 
+        />
         <div className="add-review">
           <button
             type='submit'
