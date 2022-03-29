@@ -2,9 +2,9 @@ import * as tokenService from '../services/tokenService'
 
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/reviews`
 
-function create(review) {
+function create(review, profileId) {
   console.log(review)
-  return fetch(BASE_URL, {
+  return fetch(`${BASE_URL}/${profileId}`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`,
