@@ -87,7 +87,7 @@ const App = () => {
     setProfile(profile)
   }
   
-  const handleAddReview = (newReviewData) => {
+  const handleAddReview = newReviewData => {
     reviewService.create(newReviewData)
     .then(newReview => {
       setReviews([...reviews, newReview])

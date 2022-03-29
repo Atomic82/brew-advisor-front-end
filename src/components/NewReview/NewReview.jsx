@@ -1,22 +1,26 @@
 import { useState, useEffect, useRef } from 'react'
 
-const NewReview = ({ props }) => {
+const NewReview = (props) => {
   const formElement = useRef()
-  const [reviewFormData, setReviewFormData] = useState({})
+  const [formData, setFormData] = useState({
+    comment: ''
+  })
   const [validForm, setValidForm] = useState(false)
 
   useEffect(() => {
     formElement.current.checkValidity() ?
     setValidForm(true) : setValidForm(false)
-  }, [reviewFormData])
+  }, [formData])
 
   const handleChange= evt => {
-    setReviewFormData({...reviewFormData, [evt.target.name]: evt.target.value})
+    setFormData({...formData, [evt.target.name]: evt.target.value})
   }
   const handleSubmit = evt => {
     evt.preventDefault()
-    console.log(reviewFormData)
-    props.handleAddReview(reviewFormData)
+    const reviewFormData = new FormData()
+    reviewFormData.append('comment', formData.comment)
+    console.log(formData)
+    props.handleAddReview(formData)
   }
 
   return ( 
@@ -27,7 +31,13 @@ const NewReview = ({ props }) => {
         <label htmlFor="comment">
           Feedback:
         </label>
-        <textarea value={reviewFormData.comment} onChange={handleChange} />
+        <textarea
+          id='comment-input'
+          name='comment' 
+          value={formData.comment} 
+          onChange={handleChange}
+          required 
+        />
         <div className="add-review">
           <button
             type='submit'
