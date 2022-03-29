@@ -104,7 +104,7 @@ const App = () => {
           element={<BreweryList breweries={breweries} />}
         />
         <Route
-          element={<BreweryDetails handleAddReview={handleAddReview} />}
+          element={<BreweryDetails handleAddReview={handleAddReview} user={user} />}
           path="/breweries/:id"
         />
         <Route

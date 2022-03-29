@@ -3,10 +3,12 @@ import { useState, useEffect, useRef } from 'react'
 const NewReview = (props) => {
   const formElement = useRef()
   const [formData, setFormData] = useState({
-    comment: ''
+    comment: '',
+    brewery: props.brewery.id,
+    owner: props.user
   })
   const [validForm, setValidForm] = useState(false)
-
+  
   useEffect(() => {
     formElement.current.checkValidity() ?
     setValidForm(true) : setValidForm(false)
