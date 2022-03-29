@@ -88,7 +88,8 @@ const App = () => {
   }
   
   const handleAddReview = newReviewData => {
-    reviewService.create(newReviewData)
+    console.log(user)
+    reviewService.create(newReviewData, user.profile)
     .then(newReview => {
       setReviews([...reviews, newReview])
     })
@@ -133,7 +134,17 @@ const App = () => {
         />
         <Route
           path="/profiles"
-          element={user ? <Profiles handleClick={handleClick}/> : <Navigate to="/login" />}
+          element={user ? 
+            <Profiles
+              key={profile.id} 
+              handleClick={handleClick}
+              handleAddReview={handleAddReview} 
+              user={user}
+            /> : 
+              <Navigate 
+                to="/login" 
+              />
+          }
         />
         <Route path="/profile" element={<ProfileDetails profile={profile} />}/>
         <Route
