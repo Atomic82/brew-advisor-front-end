@@ -1,19 +1,81 @@
 .loading {
-  height: 20vmin;
-  pointer-events: none;
+    height: 20vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .loading {
-    animation: loading-spin infinite 10s linear;
-  }
+    .loading {
+        animation: loading-spin infinite 10s linear;
+    }
 }
 
 @keyframes loading-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+body {
+    background-color: #EAEFF1;
+    font-family: 'poppins';
+}
+
+
+/* Nav */
+
+nav {
+    position: absolute;
+    width: 100vw;
+    height: 5vh;
+    left: 0px;
+    top: 0px;
+    background: #307155;
+    border: 2px solid #000000;
+}
+
+
+/* BrewAdvisor-title-logo */
+
+brewadvisor-title-logo {
+    position: absolute;
+    width: 267px;
+    height: 60px;
+    left: 151px;
+    top: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 60px;
+    /* identical to box height */
+    color: #EAEFF1;
+}
+
+
+/* Picture */
+
+pic {
+    position: absolute;
+    width: 315px;
+    height: 250px;
+    left: 60px;
+    top: 324px;
+    background: #000000;
+    border-radius: 20px;
+}
+
+
+/* Footer */
+
+footer {
+    position: absolute;
+    width: 100vw;
+    height: 5vh;
+    left: 0px;
+    top: 944px;
+    background: #307155;
+    border: 2px solid #000000;
 }
