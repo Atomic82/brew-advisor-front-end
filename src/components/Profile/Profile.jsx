@@ -31,7 +31,7 @@ const Profile = (props) => {
         <p>No event listed</p>
       }
     </div>
-    <div clasName='reviews'>
+    <div className='reviews'>
       <h2>Brewery Reviews</h2>
       {props.profile.reviews.length ?
         <ul>

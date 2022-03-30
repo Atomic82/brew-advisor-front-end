@@ -3,8 +3,8 @@
 View the back end of the app here: 
 
 # Screenshots
-Wireframe:
-
+Wireframes:
+!BrewAdvisor Homepage Wireframe(https://i.imgur.com/9LVajWK.png)
 
 ERD:
 
