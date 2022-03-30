@@ -18,11 +18,13 @@ const Profiles = (props) => {
       <>
         {profiles.length ?
           <div className="profile-list">
+            {/* console.log(props.handleClick) */}
             {profiles.map(profile => (
-              <div onClick={() => props.handleClick(profile)}>
-                <Link 
+              
+              <div key={profile._id} onClick={() => props.handleClick(profile)}>
+                <Link
                   to='/profile' 
-                  key={profile.id}>
+                  >
                     {profile.name}
                 </Link>
               </div>

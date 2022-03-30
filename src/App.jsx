@@ -20,21 +20,14 @@ import * as reviewService from './services/reviewService'
 import EditEvent from './pages/EditEvent/EditEvent';
 
 const App = () => {
+  const [userLocation, setUserLocation] = useState([])
   const [breweries, setBreweries] = useState([])
   const [events, setEvents] = useState([])
-  
-
-  useEffect(() => {
-    breweryService.getAll()
-      .then(allBreweries => {
-        setBreweries(allBreweries.businesses)
-      })
-  }, [])
-  
-  
-  
+  const [reviews, setReviews] = useState({})
   const [user, setUser] = useState(authService.getUser())
+  const [profile, setProfile] = useState({})
   const navigate = useNavigate()
+  
   useEffect(() => {
     if(user) {
       eventService.getAll()
@@ -44,8 +37,17 @@ const App = () => {
     }
   }, [user])
   
-  const [profile, setProfile] = useState({})
-  const [reviews, setReviews] = useState({})
+
+  const handleChangeSetLocation = locationValue => {
+    setBreweries('')
+    breweryService.getAll(locationValue)
+    .then(localBreweries => {
+      setBreweries(localBreweries.businesses)
+      setUserLocation(locationValue)
+    })
+    
+  }
+
   const handleNewEvent = newEventData => {
     eventService.create(newEventData)
     .then(newEvent => {
@@ -76,6 +78,8 @@ const App = () => {
   const handleLogout = () => {
     authService.logout()
     setUser(null)
+    setUserLocation([])
+    setBreweries([])
     navigate('/')
   }
 
@@ -86,9 +90,9 @@ const App = () => {
   const handleClick = (profile) => {
     setProfile(profile)
   }
-  
-  const handleAddReview = (newReviewData) => {
-    reviewService.create(newReviewData)
+
+  const handleAddReview = newReviewData => {
+    reviewService.create(newReviewData, user.profile)
     .then(newReview => {
       setReviews([...reviews, newReview])
     })
@@ -96,17 +100,27 @@ const App = () => {
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
+      <NavBar 
+        user={user} 
+        userLocation={userLocation}
+        handleLogout={handleLogout} 
+        handleChangeSetLocation={handleChangeSetLocation} 
+      />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
-        <Route
-          path="/breweries"
-          element={<BreweryList breweries={breweries} />}
+        <Route 
+          path="/" 
+          element={<Landing user={user} handleChangeSetLocation={handleChangeSetLocation} />} 
         />
         <Route
-          path="/brewery/:id"
-          element={<BreweryDetails handleAddReview={handleAddReview}
-          reviews={reviews} />}
+          path="/breweries"
+          element={<BreweryList 
+            breweries={breweries} 
+            userLocation={userLocation}
+          />}
+        />
+        <Route
+          element={<BreweryDetails handleAddReview={handleAddReview} user={user} />}
+          path="/breweries/:id"
         />
         <Route
           path="/events"
@@ -134,9 +148,19 @@ const App = () => {
         />
         <Route
           path="/profiles"
-          element={user ? <Profiles handleClick={handleClick}/> : <Navigate to="/login" />}
+          element={user ? 
+            <Profiles
+              key={profile._id} 
+              handleClick={handleClick}
+              handleAddReview={handleAddReview} 
+              profile={profile}
+            /> : 
+              <Navigate 
+                to="/login" 
+              />
+          }
         />
-        <Route path="/profile" element={<ProfileDetails profile={profile} />}/>
+        <Route path="/profile" element={<ProfileDetails key={profile.id} profile={profile} />}/>
         <Route
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
