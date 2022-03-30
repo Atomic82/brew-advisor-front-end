@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 const Profile = (props) => {
+  console.log(props.profile)
   return ( 
     <>
     <div className='profile-container'>
@@ -23,7 +24,7 @@ const Profile = (props) => {
         <ul>
           {props.profile.events.map(event => {
             <li>
-              {props.profile.event}
+              {event}
             </li>
           })}
         </ul>
@@ -38,7 +39,6 @@ const Profile = (props) => {
           {props.profile.reviews.map(review => {
             <li>
               {review}
-              
             </li>
           })}
         </ul>
