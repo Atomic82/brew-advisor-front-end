@@ -86,7 +86,8 @@ const App = () => {
   const handleLogout = () => {
     authService.logout()
     setUser(null)
-    setUserLocation('')
+    setUserLocation([])
+    setBreweries([])
     navigate('/')
   }
 
@@ -113,7 +114,10 @@ const App = () => {
         />
         <Route
           path="/breweries"
-          element={<BreweryList breweries={breweries} />}
+          element={<BreweryList 
+            breweries={breweries} 
+            userLocation={userLocation}
+          />}
         />
         <Route
           element={<BreweryDetails handleAddReview={handleAddReview} user={user} />}

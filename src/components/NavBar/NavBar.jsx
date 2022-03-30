@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation }) => {
   const formElement = useRef()
-  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     location: '',
   })
@@ -20,6 +19,7 @@ const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation }) =
   const handleSubmit = async evt => {
     evt.preventDefault()
     await handleChangeSetLocation(formData)
+    setFormData({location: ''})
   }
 
   return (
