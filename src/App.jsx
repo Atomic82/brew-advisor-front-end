@@ -86,6 +86,7 @@ const App = () => {
   const handleLogout = () => {
     authService.logout()
     setUser(null)
+    setUserLocation('')
     navigate('/')
   }
 
@@ -101,6 +102,7 @@ const App = () => {
     <>
       <NavBar 
         user={user} 
+        userLocation={userLocation}
         handleLogout={handleLogout} 
         handleChangeSetLocation={handleChangeSetLocation} 
       />

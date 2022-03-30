@@ -10,7 +10,7 @@ const Profile = (props) => {
       {props.profile.favorites.length ?
         <ul>
         {props.profile.favorites.map(favorite => {
-          <li>{props.profile.favorite}</li>
+          <li>{favorite}</li>
         })}
         </ul>
         :
@@ -23,7 +23,7 @@ const Profile = (props) => {
         <ul>
           {props.profile.events.map(event => {
             <li>
-              {props.profile.event}
+              {event}
             </li>
           })}
         </ul>
@@ -37,7 +37,7 @@ const Profile = (props) => {
         <ul>
           {props.profile.reviews.map(review => {
             <li>
-              {props.profile.review}
+              {review}
             </li>
           })}
         </ul>
