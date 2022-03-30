@@ -27,7 +27,7 @@ ERD:
 
 Favicon: 
 
-![BrewAdvisor Favicon](https://imgur.com/gallery/fZwBRE6)
+![BrewAdvisor Favicon](https://i.imgur.com/GhFcQfR.png)
 
 # Technologies Used🍺
 ---- 
@@ -43,11 +43,16 @@ Favicon:
 
 <a href="a"><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/></a>
 
+<a href="a"><img src="https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white"/></a>
+
+
 # Credits🍺
 ---- 
 
 https://github.com/RohanPNaher 
+
 https://github.com/Jana-P1 
+
 https://github.com/Atomic82
 
 
