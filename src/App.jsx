@@ -139,7 +139,7 @@ const App = () => {
               key={profile.id} 
               handleClick={handleClick}
               handleAddReview={handleAddReview} 
-              user={user}
+              profile={profile}
             /> : 
               <Navigate 
                 to="/login" 

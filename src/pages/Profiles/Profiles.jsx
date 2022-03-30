@@ -18,7 +18,9 @@ const Profiles = (props) => {
       <>
         {profiles.length ?
           <div className="profile-list">
+            {/* console.log(props.handleClick) */}
             {profiles.map(profile => (
+              
               <div onClick={() => props.handleClick(profile)}>
                 <Link 
                   to='/profile' 

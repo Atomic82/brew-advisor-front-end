@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom'
 
-const Profile = (props) => {
+const Profile = ({ profile} ) => {
   return ( 
     <>
     <div className='profile-container'>
-    <h1>{props.profile.name}</h1>
+    <h1>{profile.name}</h1>
     <div className='favorites'>
       <h2>Favorite Breweries</h2>
-      {props.profile.favorites.length ?
+      {profile.favorites.length ?
         <ul>
-        {props.profile.favorites.map(favorite => {
-          <li>{props.profile.favorite}</li>
+        {profile.favorites.map(favorite => {
+          <li>{profile.favorite}</li>
         })}
         </ul>
         :
@@ -19,11 +19,11 @@ const Profile = (props) => {
     </div>
     <div className='events'>
       <h2>Brewery Meet Ups</h2>
-      {props.profile.events.length ?
+      {profile.events.length ?
         <ul>
-          {props.profile.events.map(event => {
+          {profile.events.map(event => {
             <li>
-              {props.profile.event}
+              {profile.event}
             </li>
           })}
         </ul>
@@ -33,11 +33,12 @@ const Profile = (props) => {
     </div>
     <div clasName='reviews'>
       <h2>Brewery Reviews</h2>
-      {props.profile.reviews.length ?
+      {profile.reviews.length ?
         <ul>
-          {props.profile.reviews.map(review => {
+          {profile.reviews.map(review => {
             <li>
-              {props.profile.review}
+              {profile.name}
+              
             </li>
           })}
         </ul>
