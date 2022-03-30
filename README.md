@@ -14,9 +14,13 @@ Landing:
 
 New:
 
+Tablet:
+
+!BrewAdvisor Homepage iPad Pro 12.9 Wireframe(https://i.imgur.com/kTJ1Udv.png)
 
 Mobile:
 
+!BrewAdvisor Homepage iPhone 13 Pro Max Wireframe(https://i.imgur.com/aJh0i3b.png)
 
 # Technologies Used 
 
