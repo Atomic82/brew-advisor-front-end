@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 const Profile = (props) => {
-  console.log(props.profile)
+  console.log(props.profile.reviews)
   return ( 
     <>
     <div className='profile-container'>
@@ -36,11 +36,12 @@ const Profile = (props) => {
       <h2>Brewery Reviews</h2>
       {props.profile.reviews.length ?
         <ul>
-          {props.profile.reviews.map(review => {
+          {props.profile.reviews?.map(review => 
             <li>
-              {review}
+              {review.brewery}
+              {review.comment}
             </li>
-          })}
+          )}
         </ul>
         :
         <p>No reviews</p>

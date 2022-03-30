@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Profile from '../../components/Profile/Profile'
 
 
 const ProfileDetails = (props) => {
-
-  
+  // const location = useLocation()
+  // const reviews = location.state.review
   return ( 
     <>
     <div>

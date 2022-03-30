@@ -154,13 +154,14 @@ const App = () => {
               handleClick={handleClick}
               handleAddReview={handleAddReview} 
               profile={profile}
+              reviews={reviews}
             /> : 
               <Navigate 
                 to="/login" 
               />
           }
         />
-        <Route path="/profile" element={<ProfileDetails key={profile.id} profile={profile} />}/>
+        <Route path="/profile" element={<ProfileDetails key={profile.id} profile={profile} reviews={reviews} />}/>
         <Route
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
