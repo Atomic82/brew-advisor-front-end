@@ -7,7 +7,7 @@ const NewEvent = (props) => {
     timeDate: '',
   })
   const [validForm, setValidForm] = useState(false)
-  
+
   const formElement = useRef()
   useEffect(() => {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
@@ -17,11 +17,11 @@ const NewEvent = (props) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
-	const handleSubmit = async evt => {
-		evt.preventDefault()
+  const handleSubmit = async evt => {
+    evt.preventDefault()
     console.log(formData)
     await props.handleNewEvent(formData)
-	}
+  }
 
   return (
     <>
@@ -38,18 +38,24 @@ const NewEvent = (props) => {
             required
           />
         </div>
-        {/* <div> */}
-          {/* <label htmlFor="brewery-input">Which brewery do you want to go to?</label> */}
+        <div>
+          <label htmlFor="brewery-select">Which brewery do you want to go to?</label>
           {/* final version will be used a select input that has all the breweries listed */}
-          {/* <input
+          <select
             type="text"
-            id='brewery-input'
+            id='brewery-select'
             name='brewery'
             value={formData.brewery}
             onChange={handleChange}
             required
-          /> */}
-        {/* </div> */}
+          >
+            {props.breweries?.map(brewery => 
+              <option key={brewery.id} value={brewery.id}>
+                {brewery.name}
+              </option>
+            )}
+          </select>
+        </div>
         <div>
           <label htmlFor="timeDate-input">When do you want to schedule this event?</label>
           <input
