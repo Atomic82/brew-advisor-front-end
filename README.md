@@ -1,7 +1,8 @@
 # BrewAdvisor🍺
 ----
 [Launch in browser](https://brew-advisor.herokuapp.com/)
-[View the our app's Backend](https://github.com/RohanPNaher/brew-advisor-back-end)
+
+[View app's Backend](https://github.com/RohanPNaher/brew-advisor-back-end)
 
 BrewAdvisor is a site that helps you find a brew! It's a site that facilitates social gatherings and fun with friends. Who doesn't love a brewery? Users may review breweries and leave feedback. You can check out that local spot on Yelp. You can even create social events! 
 
