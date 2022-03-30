@@ -132,7 +132,10 @@ const App = () => {
         />
         <Route
           path="/new"
-          element={<NewEvent handleNewEvent={handleNewEvent}/>}
+          element={<NewEvent 
+            handleNewEvent={handleNewEvent}
+            breweries={breweries} 
+          />}
         />
         <Route
           path="/edit"
