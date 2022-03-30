@@ -20,21 +20,14 @@ import * as reviewService from './services/reviewService'
 import EditEvent from './pages/EditEvent/EditEvent';
 
 const App = () => {
+  const [userLocation, setUserLocation] = useState([])
   const [breweries, setBreweries] = useState([])
   const [events, setEvents] = useState([])
-  
-
-  useEffect(() => {
-    breweryService.getAll()
-      .then(allBreweries => {
-        setBreweries(allBreweries.businesses)
-      })
-  }, [])
-  
-  
-  
+  const [reviews, setReviews] = useState({})
   const [user, setUser] = useState(authService.getUser())
+  const [profile, setProfile] = useState({})
   const navigate = useNavigate()
+  
   useEffect(() => {
     if(user) {
       eventService.getAll()
@@ -44,8 +37,17 @@ const App = () => {
     }
   }, [user])
   
-  const [profile, setProfile] = useState({})
-  const [reviews, setReviews] = useState({})
+
+  const handleChangeSetLocation = locationValue => {
+    setBreweries('')
+    breweryService.getAll(locationValue)
+    .then(localBreweries => {
+      setBreweries(localBreweries.businesses)
+      setUserLocation(locationValue)
+    })
+    
+  }
+
   const handleNewEvent = newEventData => {
     eventService.create(newEventData)
     .then(newEvent => {
@@ -73,6 +75,14 @@ const App = () => {
       })
   }
 
+  const handleAddReview = newReviewData => {
+    console.log(user)
+    reviewService.create(newReviewData, user.profile)
+    .then(newReview => {
+      setReviews([...reviews, newReview])
+    })
+  }
+
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -86,20 +96,19 @@ const App = () => {
   const handleClick = (profile) => {
     setProfile(profile)
   }
-  
-  const handleAddReview = newReviewData => {
-    console.log(user)
-    reviewService.create(newReviewData, user.profile)
-    .then(newReview => {
-      setReviews([...reviews, newReview])
-    })
-  }
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
+      <NavBar 
+        user={user} 
+        handleLogout={handleLogout} 
+        handleChangeSetLocation={handleChangeSetLocation} 
+      />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
+        <Route 
+          path="/" 
+          element={<Landing user={user} handleChangeSetLocation={handleChangeSetLocation} />} 
+        />
         <Route
           path="/breweries"
           element={<BreweryList breweries={breweries} />}
