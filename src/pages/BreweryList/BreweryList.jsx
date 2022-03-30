@@ -9,10 +9,10 @@ const BreweryList = ({ breweries }) => {
     <>
       <h1>I am the BreweryList</h1>
       <div className='breweries-main'>
-        {breweries.length ? 
+        {breweries?.length ? 
           <div className='brewery-container'>
-            {breweries.map(brewery => (
-              <Brewery key={brewery.id} brewery={brewery} />
+            {breweries?.map(brewery => (
+              <Brewery key={brewery?.id} brewery={brewery} />
             ))}
           </div>
           :
