@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
 import Brewery from "../../components/Brewery/Brewery";
-
 
 const BreweryList = ({ breweries, userLocation }) => {
 

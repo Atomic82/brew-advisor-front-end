@@ -1,15 +1,8 @@
-import * as tokenService from '../services/tokenService'
 const BASE_URL = process.env.REACT_APP_BACKEND_SERVER_URL
-
-// function getAll() {
-//   return fetch(`${BASE_URL}/api/api/`)
-//     .then(res => res.json())
-// }
 
 async function getAll(locationData) {
   try {
-    console.log(JSON.stringify(locationData))
-    const res = await fetch(`${BASE_URL}/api/api/`, {
+    const res = await fetch(`${BASE_URL}/api/api/all`, {
       method: 'POST',
       headers: new Headers({
         'Content-type': 'application/json'
@@ -22,10 +15,26 @@ async function getAll(locationData) {
   }
 }
 
-function getOneBreweryById(breweryId) {
-  return fetch(`${BASE_URL}/api/api/${breweryId}`)
-  .then(res => res.json())
+async function getOneBreweryById(breweryId) {
+  try {
+    console.log(JSON.stringify(breweryId))
+    const res = await fetch(`${BASE_URL}/api/api/single`, {
+      method: 'POST',
+      headers: new Headers({
+        'Content-type': 'application/json'
+      }),
+      body: JSON.stringify(breweryId),
+    })
+    return res.json()
+  } catch (err) {
+    throw err
+  }
 }
+
+// function getOneBreweryById(breweryId) {
+//   return fetch(`${BASE_URL}/api/api/${breweryId}`)
+//   .then(res => res.json())
+// }
 
 export {
   getAll,
