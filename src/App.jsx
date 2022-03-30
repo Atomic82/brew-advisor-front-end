@@ -75,14 +75,6 @@ const App = () => {
       })
   }
 
-  const handleAddReview = newReviewData => {
-    console.log(user)
-    reviewService.create(newReviewData, user.profile)
-    .then(newReview => {
-      setReviews([...reviews, newReview])
-    })
-  }
-
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -97,6 +89,13 @@ const App = () => {
 
   const handleClick = (profile) => {
     setProfile(profile)
+  }
+
+  const handleAddReview = newReviewData => {
+    reviewService.create(newReviewData, user.profile)
+    .then(newReview => {
+      setReviews([...reviews, newReview])
+    })
   }
 
   return (
@@ -151,17 +150,17 @@ const App = () => {
           path="/profiles"
           element={user ? 
             <Profiles
-              key={profile.id} 
+              key={profile._id} 
               handleClick={handleClick}
               handleAddReview={handleAddReview} 
-              user={user}
+              profile={profile}
             /> : 
               <Navigate 
                 to="/login" 
               />
           }
         />
-        <Route path="/profile" element={<ProfileDetails profile={profile} />}/>
+        <Route path="/profile" element={<ProfileDetails key={profile.id} profile={profile} />}/>
         <Route
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 const Profile = (props) => {
+  console.log(props.profile)
   return ( 
     <>
     <div className='profile-container'>
@@ -10,7 +11,7 @@ const Profile = (props) => {
       {props.profile.favorites.length ?
         <ul>
         {props.profile.favorites.map(favorite => {
-          <li>{props.profile.favorite}</li>
+          <li>{favorite}</li>
         })}
         </ul>
         :
@@ -23,7 +24,7 @@ const Profile = (props) => {
         <ul>
           {props.profile.events.map(event => {
             <li>
-              {props.profile.event}
+              {event}
             </li>
           })}
         </ul>
@@ -31,13 +32,13 @@ const Profile = (props) => {
         <p>No event listed</p>
       }
     </div>
-    <div clasName='reviews'>
+    <div className='reviews'>
       <h2>Brewery Reviews</h2>
       {props.profile.reviews.length ?
         <ul>
           {props.profile.reviews.map(review => {
             <li>
-              {props.profile.review}
+              {review}
             </li>
           })}
         </ul>
