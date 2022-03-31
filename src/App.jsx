@@ -27,37 +27,38 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState({})
   const navigate = useNavigate()
-  
+
   useEffect(() => {
-    if(user) {
+    if (user) {
       eventService.getAll()
         .then(allEvents => {
           setEvents(allEvents)
         })
     }
   }, [user])
-  
+
 
   const handleChangeSetLocation = locationValue => {
-    setBreweries('')
+    // navigate('/')
+    setBreweries([])
+    setUserLocation({location: 'Changing location'})
     breweryService.getAll(locationValue)
     .then(localBreweries => {
-      setBreweries(localBreweries.businesses)
-      setUserLocation(locationValue)
-    })
-    
+        setBreweries(localBreweries.businesses)
+        setUserLocation(locationValue)
+      })
   }
 
-  const handleNewEvent = async newEventData => {
+  const handleNewEvent = newEventData => {
     breweryService.getOneBreweryById(newEventData)
       .then(breweryDetails => {
         newEventData.brewery = breweryDetails
         eventService.create(newEventData)
-        .then(newEvent => {
-          console.log(newEvent)
-          setEvents([...events, newEvent])
-          navigate('/events')
-        })
+          .then(newEvent => {
+            console.log(newEvent)
+            setEvents([...events, newEvent])
+            navigate('/events')
+          })
       })
   }
 
@@ -70,12 +71,19 @@ const App = () => {
   }
 
   const handleUpdateEvent = updatedEventData => {
-    eventService.update(updatedEventData)
-      .then(updatedEvent => {
-        console.log(updatedEvent)
-        const newEventsArray = events.map(event => event._id === updatedEvent._id ? updatedEvent : event)
-        setEvents(newEventsArray)
-        navigate('/events')
+    console.log(updatedEventData)
+    breweryService.getOneBreweryById(updatedEventData)
+      .then(updatedBrewery => {
+        console.log(updatedBrewery)
+        updatedEventData.brewery = updatedBrewery
+        console.log(updatedEventData)
+        eventService.update(updatedEventData)
+          .then(updatedEvent => {
+            console.log(updatedEvent)
+            const newEventsArray = events.map(event => event._id === updatedEvent._id ? updatedEvent : event)
+            setEvents(newEventsArray)
+            navigate('/events')
+          })
       })
   }
 
@@ -97,86 +105,114 @@ const App = () => {
 
   const handleAddReview = newReviewData => {
     reviewService.create(newReviewData, user.profile)
-    .then(newReview => {
-      setReviews([...reviews, newReview])
-    })
+      .then(newReview => {
+        setReviews([...reviews, newReview])
+      })
   }
 
   return (
     <>
-      <NavBar 
-        user={user} 
+      <NavBar
+        user={user}
         userLocation={userLocation}
-        handleLogout={handleLogout} 
-        handleChangeSetLocation={handleChangeSetLocation} 
+        handleLogout={handleLogout}
+        handleChangeSetLocation={handleChangeSetLocation}
+        breweries={breweries}
       />
       <Routes>
-        <Route 
-          path="/" 
-          element={<Landing user={user} handleChangeSetLocation={handleChangeSetLocation} />} 
+        <Route
+          path="/"
+          element={<Landing
+            user={user}
+            handleChangeSetLocation={handleChangeSetLocation}
+          />}
         />
         <Route
           path="/breweries"
-          element={<BreweryList 
-            breweries={breweries} 
+          element={<BreweryList
+            breweries={breweries}
             userLocation={userLocation}
           />}
         />
         <Route
-          element={<BreweryDetails handleAddReview={handleAddReview} user={user} />}
           path="/breweries/:id"
+          element={<BreweryDetails
+            handleAddReview={handleAddReview}
+            user={user}
+          />}
         />
         <Route
           path="/events"
-          element={<EventList events={events}/>}
+          element={<EventList
+            events={events}
+          />}
         />
         <Route
           path="/events/:id"
-          element={<EventDetails handleDeleteEvent={handleDeleteEvent} user={user} />}
+          element={<EventDetails
+            handleDeleteEvent={handleDeleteEvent}
+            user={user}
+          />}
         />
         <Route
           path="/new"
-          element={<NewEvent 
+          element={<NewEvent
             handleNewEvent={handleNewEvent}
-            breweries={breweries} 
+            breweries={breweries}
           />}
         />
         <Route
           path="/edit"
-          element={<EditEvent 
+          element={<EditEvent
             handleUpdateEvent={handleUpdateEvent}
             breweries={breweries}
           />}
         />
         <Route
           path="/signup"
-          element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
+          element={<Signup
+            handleSignupOrLogin={handleSignupOrLogin}
+          />}
         />
         <Route
           path="/login"
-          element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
+          element={<Login
+            handleSignupOrLogin={handleSignupOrLogin}
+          />}
         />
         <Route
           path="/profiles"
-          element={user ? 
+          element={user ?
             <Profiles
-              key={profile._id} 
+              key={profile._id}
               handleClick={handleClick}
-              handleAddReview={handleAddReview} 
+              handleAddReview={handleAddReview}
               profile={profile}
               reviews={reviews}
-            /> : 
-              <Navigate 
-                to="/login" 
-              />
+            /> :
+            <Navigate
+              to="/login"
+            />
           }
         />
-        <Route path="/profile" element={<ProfileDetails key={profile.id} profile={profile} reviews={reviews} />}/>
+        <Route
+          path="/profile"
+          element={<ProfileDetails
+            key={profile.id}
+            profile={profile}
+          />}
+        />
+
         <Route
           path="/changePassword"
-          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
+          element={user ?
+            <ChangePassword
+              handleSignupOrLogin={handleSignupOrLogin}
+            />
+            : <Navigate
+              to="/login"
+            />}
         />
-        
       </Routes>
     </>
   )

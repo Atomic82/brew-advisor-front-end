@@ -3,8 +3,9 @@ import { useState, useRef, useEffect } from 'react'
 const NewEvent = (props) => {
   const [formData, setFormData] = useState({ //Edit this to reflect the event model in the backend if things are added/removed to it
     name: '',
-    brewery: '',
+    brewery: props.breweries[0].id,
     timeDate: '',
+    description: '',
   })
   const [validForm, setValidForm] = useState(false)
 
@@ -48,7 +49,7 @@ const NewEvent = (props) => {
             onChange={handleChange}
             required
           >
-            {props.breweries?.map(brewery => 
+            {props.breweries?.map(brewery =>
               <option key={brewery.id} value={brewery.id}>
                 {brewery.name}
               </option>
@@ -64,6 +65,15 @@ const NewEvent = (props) => {
             value={formData.timeDate}
             onChange={handleChange}
             required
+          />
+        </div>
+        <div>
+          <label htmlFor="description-input">Write a description about your event:</label>
+          <textarea
+            id='description-input'
+            name='description'
+            value={formData.textArea}
+            onChange={handleChange}
           />
         </div>
         <div>
