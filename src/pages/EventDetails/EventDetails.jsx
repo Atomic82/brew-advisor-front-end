@@ -13,14 +13,15 @@ const EventDetails = ({ handleDeleteEvent, user }) => {
     <>
 
       <>
-        <h1>{event.name}</h1>
-        <img
-          src={brewery.photos[1] ? brewery.photos[1] : brewery.photos[0]}
-          alt={brewery.name}
-        />
-        <h2>{event.owner[0].name} is hosting an event at {brewery.name} on {date}</h2>
-        {/* <h2>this event will be occuring on {date}</h2> */}
-        <h3>{event.description}</h3>
+        <div className='event-details'>
+          <h1>{event.name}</h1>
+          <img
+            src={brewery.photos[1] ? brewery.photos[1] : brewery.photos[0]}
+            alt={brewery.name}
+          />
+          <h2>{event.owner[0].name} is hosting an event at {brewery.name} on {date}</h2>
+          <h3>{event.description}</h3>
+        </div>
 
         <div className='event-venue-details'>
           <div className='event-venue-address'>
