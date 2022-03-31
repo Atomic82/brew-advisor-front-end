@@ -36,10 +36,44 @@
         font-family: 'Poppins', sans-serif;
         /* height: 100vh; */
     }
+
+
+    add-favorite {
+        background-color: red;
+    }
+
+    add-review {
+        background-color: red;
+        
+    }
+
+    .reviews {
+    
+    }
+/* 
+
+breweries-main
+brewery-container
+loading
+{styles.container}  —> styled under #change password
+edit-delete-container
+events-main
+event-container
+profile-list
+events
+favorites
+profile-container */
     
     profile-container {
         display: flex;
         background-color: rgb(251, 255, 0);
+    }
+
+    image {
+        display: flex;
+        justify-content: center;
+        height: 300px;
+        width: 300px;
     }
 
     .favorites, .reviews {

@@ -20,6 +20,12 @@ const BreweryDetails = ({ handleAddReview, user, reviews }) => {
           {brewery.location.display_address[1]}</p>
         </div>
         <p className="brewery-phone">{brewery.display_phone}</p>
+        <div className="add-favorite">
+          <button>
+            Favorite brewery
+          </button>
+        </div>
+
         <div className="add-review">
           <NewReview handleAddReview={handleAddReview} brewery={brewery} user={user} />  
         </div> 
