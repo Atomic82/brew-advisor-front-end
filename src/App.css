@@ -1,88 +1,116 @@
-.loading {
-    height: 20vmin;
-    pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+    
     .loading {
-        animation: loading-spin infinite 10s linear;
+        height: 20vmin;
+        pointer-events: none;
     }
-}
-
-@keyframes loading-spin {
-    from {
-        transform: rotate(0deg);
+    
+    @media (prefers-reduced-motion: no-preference) {
+        .loading {
+            animation: loading-spin infinite 10s linear;
+        }
     }
-    to {
-        transform: rotate(360deg);
+    
+    @keyframes loading-spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
     }
-}
+    
+    html * {
+        font-size: 1.5rem !important;
+        color: #000 !important;
+    }
+    
+    body {
+        background-color: #EAEFF1;
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        font-family: 'Poppins', sans-serif;
+        /* height: 100vh; */
+    }
+    
+    profile-container {
+        display: flex;
+        background-color: rgb(251, 255, 0);
+    }
 
-html * {
-    font-size: 1.5rem !important;
-    color: #000 !important;
-    font-family: 'poppins' !important;
-}
+    .favorites {
+        background-color: orange;
+        display: flex;
+        justify-content: center;
+    }
 
-body {
-    background-color: #EAEFF1;
-}
+    event-link {
+        background-color: pink;
+    }
+    /* Nav */
+    
+    nav {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        width: 100vw;
+        height: 5vh;
+        left: 0px;
+        top: 0px;
+        background: #307155;
+        border: 2px solid #000000;
+    }
 
+    p{
+        width: 10vw;
+        display: flex;
+        justify-content: center;
+    }
 
-/* Nav */
-
-nav {
-    position: absolute;
+    .reviews {
     display: flex;
-    flex-direction: row;
-    width: 100vw;
-    height: 5vh;
-    left: 0px;
-    top: 0px;
-    background: #307155;
-    border: 2px solid #000000;
-}
+    justify-content: center;
+    height: 10vh;
+    width: 50vw;
+    }
 
-
-/* BrewAdvisor-title-logo */
-
-brewadvisor-title-logo {
-    position: absolute;
-    width: 267px;
-    height: 60px;
-    left: 151px;
-    top: 10px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 40px;
-    line-height: 60px;
-    /* identical to box height */
-    color: #ff0000;
-}
-
-
-/* Picture */
-
-pic {
-    position: absolute;
-    width: 315px;
-    height: 250px;
-    left: 60px;
-    top: 324px;
-    background: #ff0000;
-    border-radius: 20px;
-}
-
-
-/* Footer */
-
-footer {
-    position: absolute;
-    width: 100vw;
-    height: 5vh;
-    left: 0px;
-    top: 944px;
-    background: #307155;
-    border: 2px solid #000000;
-}
+    /* BrewAdvisor-title-logo */
+    
+    brewadvisor-title-logo {
+        position: absolute;
+        width: 267px;
+        height: 60px;
+        left: 151px;
+        top: 10px;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 40px;
+        line-height: 60px;
+        /* identical to box height */
+        color: #ff0000;
+    }
+    /* Picture */
+    
+    pic {
+        position: absolute;
+        width: 10vw;
+        height: 10vh;
+        background: #ff0000;
+        border-radius: 20px;
+    }
+    /* Footer */
+    
+    footer {
+        position: absolute;
+        width: 100vw;
+        height: 5vh;
+        left: 0px;
+        top: 944px;
+        background: #fa0000;
+        border: 2px solid #000000;
+    }
