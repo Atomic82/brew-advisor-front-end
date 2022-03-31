@@ -47,7 +47,7 @@ const App = () => {
   }, [])
   
   const handleChangeSetLocation = locationValue => {
-    // navigate('/')
+    navigate('/')
     setBreweries([])
     setUserLocation({location: 'Changing location'})
     breweryService.getAll(locationValue)
@@ -133,6 +133,7 @@ const App = () => {
           element={<Landing
             user={user}
             handleChangeSetLocation={handleChangeSetLocation}
+            userLocation={userLocation}
           />}
         />
         <Route
