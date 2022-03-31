@@ -37,7 +37,15 @@ const App = () => {
     }
   }, [user])
 
-
+  useEffect(() => {
+    if(user) {
+      reviewService.getAll()
+      .then(allReviews => {
+        setReviews(allReviews)
+      })
+    }
+  }, [user])
+  
   const handleChangeSetLocation = locationValue => {
     // navigate('/')
     setBreweries([])
@@ -139,6 +147,7 @@ const App = () => {
           element={<BreweryDetails
             handleAddReview={handleAddReview}
             user={user}
+            reviews={reviews}
           />}
         />
         <Route
@@ -202,7 +211,6 @@ const App = () => {
             profile={profile}
           />}
         />
-
         <Route
           path="/changePassword"
           element={user ?
@@ -218,4 +226,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;
