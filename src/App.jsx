@@ -44,7 +44,7 @@ const App = () => {
         setReviews(allReviews)
       })
     }
-  }, [user])
+  }, [])
   
   const handleChangeSetLocation = locationValue => {
     // navigate('/')
