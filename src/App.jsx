@@ -48,13 +48,17 @@ const App = () => {
     
   }
 
-  const handleNewEvent = newEventData => {
-    eventService.create(newEventData)
-    .then(newEvent => {
-      console.log(newEvent)
-      setEvents([...events, newEvent])
-      navigate('/')
-    })
+  const handleNewEvent = async newEventData => {
+    breweryService.getOneBreweryById(newEventData)
+      .then(breweryDetails => {
+        newEventData.brewery = breweryDetails
+        eventService.create(newEventData)
+        .then(newEvent => {
+          console.log(newEvent)
+          setEvents([...events, newEvent])
+          navigate('/events')
+        })
+      })
   }
 
   const handleDeleteEvent = id => {
@@ -136,7 +140,10 @@ const App = () => {
         />
         <Route
           path="/edit"
-          element={<EditEvent handleUpdateEvent={handleUpdateEvent}/>}
+          element={<EditEvent 
+            handleUpdateEvent={handleUpdateEvent}
+            breweries={breweries}
+          />}
         />
         <Route
           path="/signup"
@@ -171,4 +178,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;

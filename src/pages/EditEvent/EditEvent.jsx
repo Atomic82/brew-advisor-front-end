@@ -36,18 +36,23 @@ const EditEvent = (props) => {
             required
           />
         </div>
-        {/* <div> */}
-          {/* <label htmlFor="brewery-input">Which brewery do you want to go to?</label> */}
-          {/* final version will be used a select input that has all the breweries listed */}
-          {/* <input
+        <div>
+          <label htmlFor="brewery-select">Which brewery do you want to go to?</label>
+          <select
             type="text"
-            id='brewery-input'
+            id='brewery-select'
             name='brewery'
             value={formData.brewery}
             onChange={handleChange}
             required
-          /> */}
-        {/* </div> */}
+          >
+            {props.breweries?.map(brewery => 
+              <option key={brewery.id} value={brewery.id}>
+                {brewery.name}
+              </option>
+            )}
+          </select>
+        </div>
         <div>
           <label htmlFor="timeDate-input">When do you want to schedule this event?</label>
           <input
