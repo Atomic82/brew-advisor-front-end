@@ -38,16 +38,14 @@ const App = () => {
   }, [user])
 
   useEffect(() => {
-    if(user) {
-      reviewService.getAll()
-      .then(allReviews => {
-        setReviews(allReviews)
-      })
-    }
-  }, [user])
+    reviewService.getAll()
+    .then(allReviews => {
+      setReviews(allReviews)
+    })
+  }, [])
   
   const handleChangeSetLocation = locationValue => {
-    navigate('/')
+    // navigate('/')
     setBreweries([])
     setUserLocation({location: 'Changing location'})
     breweryService.getAll(locationValue)
@@ -127,7 +125,7 @@ const App = () => {
           path="/"
           element={<Landing
             user={user}
-            handleChangeSetLocation={handleChangeSetLocation}
+            handleChangeSetLocation={handleChangeSetLocation} 
             userLocation={userLocation}
           />}
         />
