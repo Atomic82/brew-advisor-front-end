@@ -20,7 +20,6 @@ const NewReview = (props) => {
   }
   const handleSubmit = async evt => {
     evt.preventDefault()
-    alert('You have successfully added your review')
     await props.handleAddReview(formData)
     setFormData({
       comment: '',
