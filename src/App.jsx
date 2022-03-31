@@ -48,13 +48,17 @@ const App = () => {
     
   }
 
-  const handleNewEvent = newEventData => {
-    eventService.create(newEventData)
-    .then(newEvent => {
-      console.log(newEvent)
-      setEvents([...events, newEvent])
-      navigate('/events')
-    })
+  const handleNewEvent = async newEventData => {
+    breweryService.getOneBreweryById(newEventData)
+      .then(breweryDetails => {
+        newEventData.brewery = breweryDetails
+        eventService.create(newEventData)
+        .then(newEvent => {
+          console.log(newEvent)
+          setEvents([...events, newEvent])
+          navigate('/events')
+        })
+      })
   }
 
   const handleDeleteEvent = id => {
