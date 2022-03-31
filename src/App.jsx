@@ -36,6 +36,15 @@ const App = () => {
         })
     }
   }, [user])
+
+  useEffect(() => {
+    if(user) {
+      reviewService.getAll()
+      .then(allReviews => {
+        setReviews(allReviews)
+      })
+    }
+  }, [user])
   
 
   const handleChangeSetLocation = locationValue => {
@@ -123,7 +132,7 @@ const App = () => {
           />}
         />
         <Route
-          element={<BreweryDetails handleAddReview={handleAddReview} user={user} />}
+          element={<BreweryDetails handleAddReview={handleAddReview} user={user} reviews={reviews} />}
           path="/breweries/:id"
         />
         <Route

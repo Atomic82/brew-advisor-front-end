@@ -15,9 +15,13 @@ function create(review, profileId) {
 }
 
 function getAll() {
-  return fetch(`${BASE_URL}`,
-  )
-
+  return fetch(`${BASE_URL}`, {
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-type': 'application/json'
+    },
+  })
+  .then(res => res.json())
 }
 
 
@@ -26,4 +30,5 @@ function getAll() {
 
 export {
   create,
+  getAll
 }
