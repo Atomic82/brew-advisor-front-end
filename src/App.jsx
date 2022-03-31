@@ -53,7 +53,7 @@ const App = () => {
     .then(newEvent => {
       console.log(newEvent)
       setEvents([...events, newEvent])
-      navigate('/')
+      navigate('/events')
     })
   }
 

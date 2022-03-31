@@ -1,8 +1,4 @@
 import Event from "../../components/EventCard/EventCard";
-import * as eventService from "../../services/eventService";
-import { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
-
 
 const EventList = ({ events }) => {
 
