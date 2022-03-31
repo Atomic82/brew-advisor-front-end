@@ -3,7 +3,8 @@ import { useLocation, Link } from 'react-router-dom'
 
 const EditEvent = (props) => {
   const location = useLocation()
-  const [formData, setFormData] = useState(location.state.event)
+  const event = location.state.event
+  const [formData, setFormData] = useState(event)
   const [validForm, setValidForm] = useState(true)
   
   const formElement = useRef()
@@ -37,7 +38,7 @@ const EditEvent = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="brewery-select">Which brewery do you want to go to?</label>
+          <label htmlFor="brewery-select">Which brewery do you want to go to? (Based on your current location)</label>
           <select
             type="text"
             id='brewery-select'
@@ -62,6 +63,15 @@ const EditEvent = (props) => {
             value={formData.timeDate}
             onChange={handleChange}
             required
+          />
+        </div>
+        <div>
+          <label htmlFor="description-input">Write a description about your event:</label>
+          <textarea
+            id='description-input'
+            name='description'
+            value={formData.description}
+            onChange={handleChange}
           />
         </div>
         <div>
