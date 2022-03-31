@@ -20,7 +20,6 @@ const NewEvent = (props) => {
 
   const handleSubmit = async evt => {
     evt.preventDefault()
-    console.log(formData)
     await props.handleNewEvent(formData)
   }
 

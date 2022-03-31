@@ -1,6 +1,5 @@
 const ReviewCard = ({ brewery, reviews }) => {
   const breweryReviews = reviews.filter(review => review.brewery === brewery.id)
-  console.log(breweryReviews)
   return ( 
     <>
       {breweryReviews.map(review => 

@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
 const NewReview = (props) => {
-  console.log(props)
   const formElement = useRef()
   const [formData, setFormData] = useState({
     comment: '',

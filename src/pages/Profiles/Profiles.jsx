@@ -18,7 +18,6 @@ const Profiles = (props) => {
       <>
         {profiles.length ?
           <div className="profile-list">
-            {/* console.log(props.handleClick) */}
             {profiles.map(profile => (
               
               <div key={profile._id} onClick={() => props.handleClick(profile)}>
