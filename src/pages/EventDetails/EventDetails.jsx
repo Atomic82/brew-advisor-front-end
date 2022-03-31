@@ -48,7 +48,7 @@ const EventDetails = ({ handleDeleteEvent, user }) => {
             :
             <div>hah no edits or delete</div>
           }
-          <Link to='/'>Go to landing</Link>
+          <Link to='/events'>Go back to All Events</Link>
           <EventComment />
         </>
         :
@@ -59,32 +59,6 @@ const EventDetails = ({ handleDeleteEvent, user }) => {
           </div>
         </>
       }
-      {/* <h1>{event.name}</h1>
-      <img
-        src={eventBrewery.photos[1]}
-        alt={eventBrewery.name}
-      />
-      <h2>This event is being held at {eventBrewery.name} and is hosted by {event.owner[0].name}</h2>
-      <h2>this event will be occuring on {event.timeDate}</h2>
-      {user.profile === event.owner[0]?._id ?
-        <div className="edit-delete-container">
-          <Link
-            to='/edit'
-            state={{ event }}
-          >
-            Edit the event
-          </Link>
-          <button
-            onClick={() => handleDeleteEvent(event._id)}
-          >
-            Delete event
-          </button>
-        </div>
-        :
-        <div>hah no edits or delete</div>
-      }
-      <Link to='/'>Go to landing</Link>
-      <EventComment /> */}
     </>
   );
 }
