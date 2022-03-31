@@ -42,9 +42,10 @@
         background-color: rgb(251, 255, 0);
     }
 
-    .favorites {
-        background-color: orange;
+    .favorites, .reviews {
+        
         display: flex;
+        flex-direction: column;
         justify-content: center;
     }
 
@@ -78,22 +79,6 @@
     width: 50vw;
     }
 
-    /* BrewAdvisor-title-logo */
-    
-    brewadvisor-title-logo {
-        position: absolute;
-        width: 267px;
-        height: 60px;
-        left: 151px;
-        top: 10px;
-        font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 800;
-        font-size: 40px;
-        line-height: 60px;
-        /* identical to box height */
-        color: #ff0000;
-    }
     /* Picture */
     
     pic {
