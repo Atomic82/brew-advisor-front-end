@@ -188,6 +188,7 @@ const App = () => {
               handleClick={handleClick}
               handleAddReview={handleAddReview}
               profile={profile}
+              reviews={reviews}
             /> :
             <Navigate
               to="/login"
@@ -201,6 +202,7 @@ const App = () => {
             profile={profile}
           />}
         />
+
         <Route
           path="/changePassword"
           element={user ?
