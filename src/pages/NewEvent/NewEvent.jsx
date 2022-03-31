@@ -40,7 +40,6 @@ const NewEvent = (props) => {
         </div>
         <div>
           <label htmlFor="brewery-select">Which brewery do you want to go to?</label>
-          {/* final version will be used a select input that has all the breweries listed */}
           <select
             type="text"
             id='brewery-select'
