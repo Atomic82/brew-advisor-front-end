@@ -39,16 +39,17 @@ const App = () => {
 
 
   const handleChangeSetLocation = locationValue => {
-    setBreweries('')
+    // navigate('/')
+    setBreweries([])
+    setUserLocation({location: 'Changing location'})
     breweryService.getAll(locationValue)
-      .then(localBreweries => {
+    .then(localBreweries => {
         setBreweries(localBreweries.businesses)
         setUserLocation(locationValue)
       })
-
   }
 
-  const handleNewEvent = async newEventData => {
+  const handleNewEvent = newEventData => {
     breweryService.getOneBreweryById(newEventData)
       .then(breweryDetails => {
         newEventData.brewery = breweryDetails
@@ -70,12 +71,19 @@ const App = () => {
   }
 
   const handleUpdateEvent = updatedEventData => {
-    eventService.update(updatedEventData)
-      .then(updatedEvent => {
-        console.log(updatedEvent)
-        const newEventsArray = events.map(event => event._id === updatedEvent._id ? updatedEvent : event)
-        setEvents(newEventsArray)
-        navigate('/events')
+    console.log(updatedEventData)
+    breweryService.getOneBreweryById(updatedEventData)
+      .then(updatedBrewery => {
+        console.log(updatedBrewery)
+        updatedEventData.brewery = updatedBrewery
+        console.log(updatedEventData)
+        eventService.update(updatedEventData)
+          .then(updatedEvent => {
+            console.log(updatedEvent)
+            const newEventsArray = events.map(event => event._id === updatedEvent._id ? updatedEvent : event)
+            setEvents(newEventsArray)
+            navigate('/events')
+          })
       })
   }
 
@@ -109,6 +117,7 @@ const App = () => {
         userLocation={userLocation}
         handleLogout={handleLogout}
         handleChangeSetLocation={handleChangeSetLocation}
+        breweries={breweries}
       />
       <Routes>
         <Route

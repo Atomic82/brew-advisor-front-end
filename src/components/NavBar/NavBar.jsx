@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation }) => {
+const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation, breweries }) => {
   const formElement = useRef()
   const [formData, setFormData] = useState({
     location: '',
@@ -33,7 +33,7 @@ const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation }) =
             <li><Link to="/changePassword">Change Password</Link></li>
             <li><Link to="/breweries">Breweries</Link></li>
             <li><Link to="/events">Events</Link></li>
-            {userLocation.location ? <li><Link to="/new">Make a new Event?</Link></li> : <></>}
+            {breweries.length ? <li><Link to="/new">Make a new Event?</Link></li> : <></> }
           </ul>
           <div>
             {userLocation.location ?
