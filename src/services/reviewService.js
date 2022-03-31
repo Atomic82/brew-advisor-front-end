@@ -14,10 +14,16 @@ function create(review, profileId) {
   .then(res => res.json())
 }
 
-function getall()
+function getAll() {
+  return fetch(`${BASE_URL}`,
+  )
+
+}
+
+
 
 
 
 export {
-  create
+  create,
 }

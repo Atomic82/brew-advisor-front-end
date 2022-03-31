@@ -53,7 +53,7 @@ const App = () => {
     .then(newEvent => {
       console.log(newEvent)
       setEvents([...events, newEvent])
-      navigate('/events')
+      navigate('/')
     })
   }
 
@@ -132,10 +132,7 @@ const App = () => {
         />
         <Route
           path="/new"
-          element={<NewEvent 
-            handleNewEvent={handleNewEvent}
-            breweries={breweries} 
-          />}
+          element={<NewEvent handleNewEvent={handleNewEvent}/>}
         />
         <Route
           path="/edit"
@@ -157,14 +154,13 @@ const App = () => {
               handleClick={handleClick}
               handleAddReview={handleAddReview} 
               profile={profile}
-              reviews={reviews}
             /> : 
               <Navigate 
                 to="/login" 
               />
           }
         />
-        <Route path="/profile" element={<ProfileDetails key={profile.id} profile={profile} reviews={reviews} />}/>
+        <Route path="/profile" element={<ProfileDetails key={profile.id} profile={profile} />}/>
         <Route
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
