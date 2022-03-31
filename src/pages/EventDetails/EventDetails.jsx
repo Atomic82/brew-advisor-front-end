@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import EventComment from "../../components/EventComment/EventComment";
-// import * as breweryService from '../../services/breweryService';
 
 const EventDetails = ({ handleDeleteEvent, user }) => {
   const location = useLocation()
@@ -26,8 +24,10 @@ const EventDetails = ({ handleDeleteEvent, user }) => {
         <div className='event-venue-details'>
           <div className='event-venue-address'>
             <h3>Venue Address:</h3>
-            <p>{brewery.location.display_address[0]}</p>
-            <p>{brewery.location.display_address[1]}</p>
+            <p>
+              {brewery.location.display_address[0]}<br />
+              {brewery.location.display_address[1]}
+            </p>
           </div>
           {brewery.phone !== '' &&
             <div className='event-venue-phone'>
