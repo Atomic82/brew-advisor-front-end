@@ -33,7 +33,7 @@ const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation, bre
             <li><Link to="/changePassword">Change Password</Link></li>
             <li><Link to="/breweries">Breweries</Link></li>
             <li><Link to="/events">Events</Link></li>
-            {breweries.length ? <li><Link to="/new">Make a new Event?</Link></li> : <></> }
+            {breweries.length ? <li><Link to="/new">Make a new Event?</Link></li> : <></>}
           </ul>
           <div>
             {userLocation.location ?
@@ -82,30 +82,35 @@ const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation, bre
               :
               <p>Please set a location</p>
             }
-            <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
+            <form autoComplete='off' ref={formElement} onSubmit={handleSubmit} className='location-form'>
               <div>
-                {userLocation.location ?
-                  <label htmlFor="location-input">Change your location :</label>
-                  :
-                  <label htmlFor="location-input">Set your location:</label>
-                }
-                <input
-                  type="text"
-                  id='location-input'
-                  name='location'
-                  value={formData.location}
-                  onChange={handleChange}
-                  placeholder='Washington, DC or 20001'
-                  required
-                />
-              </div>
-              <div>
-                <button
-                  type='submit'
-                  disabled={!validForm}
-                >
-                  Set Location
-                </button>
+                {userLocation.location && <p className='location-indicator'>Location set to {userLocation.location}</p>}
+                <div>
+                  {userLocation.location ?
+                    <label htmlFor="location-input" className='location-label'>Change your location:</label>
+                    :
+                    <label htmlFor="location-input" className='location-label'>Please set your location to find local breweries:</label>
+                  }
+                  <input
+                    type="text"
+                    id='location-input'
+                    className='location-input'
+                    name='location'
+                    value={formData.location}
+                    onChange={handleChange}
+                    placeholder='Washington, DC or 20001'
+                    required
+                  />
+                </div>
+                <div>
+                  <button
+                    className='location-submit-btn'
+                    type='submit'
+                    disabled={!validForm}
+                  >
+                    Set Location
+                  </button>
+                </div>
               </div>
             </form>
           </div>
