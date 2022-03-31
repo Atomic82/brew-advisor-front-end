@@ -65,6 +65,15 @@ const EditEvent = (props) => {
           />
         </div>
         <div>
+          <label htmlFor="description-input">Write a description about your event:</label>
+          <textarea
+            id='description-input'
+            name='description'
+            value={formData.textArea}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
           <button
             type='submit'
             disabled={!validForm}
