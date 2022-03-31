@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 
 const NewReview = (props) => {
-  console.log(props)
+  
   const formElement = useRef()
   const [formData, setFormData] = useState({
     comment: '',
-    brewery: props.brewery.id,
+    brewery: props.brewery.name,
     owner: props.user
   })
   const [validForm, setValidForm] = useState(false)
@@ -20,7 +20,6 @@ const NewReview = (props) => {
   }
   const handleSubmit = async evt => {
     evt.preventDefault()
-    alert('You have successfully added your review')
     await props.handleAddReview(formData)
     setFormData({
       comment: '',
