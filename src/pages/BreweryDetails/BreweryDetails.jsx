@@ -4,10 +4,11 @@ import NewReview from '../../components/NewReview/NewReview'
 import ReviewCard from "../../components/ReviewCard/ReviewCard";
 
 
-const BreweryDetails = ({ handleAddReview, user }) => {
+const BreweryDetails = ({ handleAddReview, user, reviews }) => {
   const location = useLocation()
   const brewery = location.state.brewery
-
+  
+ 
   return (
     <>
       <div>
@@ -22,8 +23,8 @@ const BreweryDetails = ({ handleAddReview, user }) => {
         <div className="add-review">
           <NewReview handleAddReview={handleAddReview} brewery={brewery} user={user} />  
         </div> 
-        <div className="reviews">
-          <ReviewCard />
+        <div className="reviews" key={reviews._id}>
+            <ReviewCard reviews={reviews} brewery={brewery} />  
         </div>
         <a href={brewery.url} target="_blank" rel="noreferrer">On Yelp</a>
         
