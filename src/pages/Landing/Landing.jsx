@@ -32,11 +32,11 @@ const Landing = ({ user, handleChangeSetLocation, userLocation }) => {
         <div>
           {userLocation.location && <p>Location set to {userLocation.location}</p>}
           <div>
-            {userLocation.location ?
+            {userLocation.location ? 
               <label htmlFor="location-input">Change your location:</label>
               :
               <label htmlFor="location-input">Please set your location to find local breweries:</label>
-            }
+            } 
             <input
               type="text"
               id='location-input'
