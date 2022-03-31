@@ -24,8 +24,8 @@ const EditEvent = (props) => {
 
   return (
     <>
-      <h1>Schedule an Event</h1>
-      <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
+      <h1 className='event-add-edit-header'>Schedule an Event</h1>
+      <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}className='event-add-edit-form'>
         <div>
           <label htmlFor="name-input">Name Your Event</label>
           <input

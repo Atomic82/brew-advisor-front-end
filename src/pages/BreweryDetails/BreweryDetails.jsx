@@ -11,22 +11,22 @@ const BreweryDetails = ({ handleAddReview, user, reviews }) => {
  
   return (
     <>
-      <div>
+      <div className="brewery-main">
         <h1>{brewery.name}</h1>
-        <img src={brewery.image_url} alt={brewery.alias} />
-        <h3>Rating: {brewery.rating}</h3>
-        <div>
+        <img src={brewery.image_url} alt={brewery.alias} className="brewery-img" />
+        <h3 className="brewery-rating" >Rating: {brewery.rating}</h3>
+        <div className="brewery-address">
           <p>{brewery.location.display_address[0]}<br />
           {brewery.location.display_address[1]}</p>
         </div>
-        <p>{brewery.display_phone}</p>
+        <p className="brewery-phone">{brewery.display_phone}</p>
         <div className="add-review">
           <NewReview handleAddReview={handleAddReview} brewery={brewery} user={user} />  
         </div> 
-        <div className="reviews" key={reviews._id}>
+        <div className="reviews">
             <ReviewCard reviews={reviews} brewery={brewery} />  
         </div>
-        <a href={brewery.url} target="_blank" rel="noreferrer">On Yelp</a>
+        <a href={brewery.url} target="_blank" rel="noreferrer" className="brewery-yelp">On Yelp</a>
         
       </div>
       <Link to='/breweries'>Go back to Breweries</Link>

@@ -14,7 +14,7 @@ const Event = ({ event }) => {
             src={event.brewery.photos[1] ? event.brewery.photos[1] : event.brewery.photos[0]}
             alt={event.brewery.name}
           />
-          <p className="event-link-test">View {event.name}</p>
+          <p className="event-link-text">View {event.name}</p>
         </div>
       </Link>
     </>

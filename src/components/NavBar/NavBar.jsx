@@ -77,11 +77,6 @@ const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation, bre
             <li><Link to="/breweries">Breweries</Link></li>
           </ul>
           <div>
-            {userLocation.location ?
-              <p>Location set to {userLocation.location}</p>
-              :
-              <p>Please set a location</p>
-            }
             <form autoComplete='off' ref={formElement} onSubmit={handleSubmit} className='location-form'>
               <div>
                 {userLocation.location && <p className='location-indicator'>Location set to {userLocation.location}</p>}
