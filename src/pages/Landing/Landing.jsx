@@ -1,10 +1,8 @@
 import styles from './Landing.module.css'
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const Landing = ({ user, handleChangeSetLocation, userLocation }) => {
   const formElement = useRef()
-  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     location: '',
   })

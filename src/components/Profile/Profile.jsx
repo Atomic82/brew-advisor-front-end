@@ -1,7 +1,4 @@
-import { Link } from 'react-router-dom'
-
 const Profile = (props) => {
-  console.log(props.profile.reviews)
   return ( 
     <>
     <div className='profile-container'>

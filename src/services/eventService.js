@@ -1,18 +1,6 @@
 import * as tokenService from '../services/tokenService'
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/events`
 
-// function create(event) {
-//   return fetch(BASE_URL, {
-//     method: 'POST',
-//     headers: {'Authorization': `Bearer ${tokenService.getToken()}`},
-//     body: JSON.stringify(event)
-//   })
-// 	.then(res => {
-//     console.log(JSON.stringify(event))
-//     res.json()
-//   })
-// }
-
 async function create(event) {
   try {
     const res = await fetch(BASE_URL, {

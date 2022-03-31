@@ -17,7 +17,6 @@ async function getAll(locationData) {
 
 async function getOneBreweryById(breweryId) {
   try {
-    console.log(JSON.stringify(breweryId))
     const res = await fetch(`${BASE_URL}/api/api/single`, {
       method: 'POST',
       headers: new Headers({

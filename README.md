@@ -21,7 +21,11 @@ Mobile:
 
 ![Wireframe - iPhone 13 Pro Max](https://i.imgur.com/aJh0i3b.png)
 
-ERD:
+Entity Relationship Diagram:
+
+![ERD](https://i.imgur.com/LP65qU6.png)
+
+Pageination Hierarchy:
 
 ![Page/Component Hierarchy](https://i.imgur.com/Kqd9hfP.png)
 
@@ -51,10 +55,16 @@ Favicon:
 
 https://github.com/RohanPNaher 
 
+
 https://github.com/Jana-P1 
+
 
 https://github.com/Atomic82
 
 
 # Stretch Goals🍺
-----
+* Users can add beers or other items to a brewery's page to show their offerings. 
+* Adding the ability to set profile pictures for users.
+* Adding the ability for users to click a button on an event page to show that they are attending.
+* Add Google Maps functionality.
+* Expand landing page to show a small selection of breweries loaded in from the location.

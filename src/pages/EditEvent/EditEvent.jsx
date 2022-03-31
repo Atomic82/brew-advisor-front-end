@@ -18,7 +18,6 @@ const EditEvent = (props) => {
 
 	const handleSubmit = async evt => {
 		evt.preventDefault()
-    console.log(formData)
     await props.handleUpdateEvent(formData)
 	}
 

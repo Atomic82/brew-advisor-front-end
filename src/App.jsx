@@ -61,7 +61,6 @@ const App = () => {
         newEventData.brewery = breweryDetails
         eventService.create(newEventData)
           .then(newEvent => {
-            console.log(newEvent)
             setEvents([...events, newEvent])
             navigate('/events')
           })
@@ -77,15 +76,11 @@ const App = () => {
   }
 
   const handleUpdateEvent = updatedEventData => {
-    console.log(updatedEventData)
     breweryService.getOneBreweryById(updatedEventData)
       .then(updatedBrewery => {
-        console.log(updatedBrewery)
         updatedEventData.brewery = updatedBrewery
-        console.log(updatedEventData)
         eventService.update(updatedEventData)
           .then(updatedEvent => {
-            console.log(updatedEvent)
             const newEventsArray = events.map(event => event._id === updatedEvent._id ? updatedEvent : event)
             setEvents(newEventsArray)
             navigate('/events')
