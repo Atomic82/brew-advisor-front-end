@@ -3,11 +3,12 @@ import { useState, useRef, useEffect } from 'react'
 const NewEvent = (props) => {
   const [formData, setFormData] = useState({ //Edit this to reflect the event model in the backend if things are added/removed to it
     name: '',
-    // brewery: '',
+    brewery: props.breweries[0].id,
     timeDate: '',
+    description: '',
   })
   const [validForm, setValidForm] = useState(false)
-  
+
   const formElement = useRef()
   useEffect(() => {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
@@ -17,16 +18,16 @@ const NewEvent = (props) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
-	const handleSubmit = async evt => {
-		evt.preventDefault()
+  const handleSubmit = async evt => {
+    evt.preventDefault()
     console.log(formData)
     await props.handleNewEvent(formData)
-	}
+  }
 
   return (
     <>
-      <h1>Schedule an Event</h1>
-      <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
+      <h1 className='event-add-edit-header'>Schedule an Event</h1>
+      <form autoComplete='off' ref={formElement} onSubmit={handleSubmit} className='event-add-edit-form'>
         <div>
           <label htmlFor="name-input">Name Your Event</label>
           <input
@@ -38,18 +39,23 @@ const NewEvent = (props) => {
             required
           />
         </div>
-        {/* <div> */}
-          {/* <label htmlFor="brewery-input">Which brewery do you want to go to?</label> */}
-          {/* final version will be used a select input that has all the breweries listed */}
-          {/* <input
+        <div>
+          <label htmlFor="brewery-select">Which brewery do you want to go to?</label>
+          <select
             type="text"
-            id='brewery-input'
+            id='brewery-select'
             name='brewery'
             value={formData.brewery}
             onChange={handleChange}
             required
-          /> */}
-        {/* </div> */}
+          >
+            {props.breweries?.map(brewery =>
+              <option key={brewery.id} value={brewery.id}>
+                {brewery.name}
+              </option>
+            )}
+          </select>
+        </div>
         <div>
           <label htmlFor="timeDate-input">When do you want to schedule this event?</label>
           <input
@@ -59,6 +65,15 @@ const NewEvent = (props) => {
             value={formData.timeDate}
             onChange={handleChange}
             required
+          />
+        </div>
+        <div>
+          <label htmlFor="description-input">Write a description about your event:</label>
+          <textarea
+            id='description-input'
+            name='description'
+            value={formData.textArea}
+            onChange={handleChange}
           />
         </div>
         <div>

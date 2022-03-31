@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 
 const NewReview = (props) => {
+  console.log(props)
   const formElement = useRef()
   const [formData, setFormData] = useState({
     comment: '',
@@ -19,8 +20,13 @@ const NewReview = (props) => {
   }
   const handleSubmit = async evt => {
     evt.preventDefault()
-    console.log(formData)
+    alert('You have successfully added your review')
     await props.handleAddReview(formData)
+    setFormData({
+      comment: '',
+      brewery: props.brewery.id,
+      owner: props.user
+    })
   }
 
   return ( 

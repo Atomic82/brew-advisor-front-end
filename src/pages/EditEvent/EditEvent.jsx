@@ -3,7 +3,8 @@ import { useLocation, Link } from 'react-router-dom'
 
 const EditEvent = (props) => {
   const location = useLocation()
-  const [formData, setFormData] = useState(location.state.event)
+  const event = location.state.event
+  const [formData, setFormData] = useState(event)
   const [validForm, setValidForm] = useState(true)
   
   const formElement = useRef()
@@ -23,8 +24,8 @@ const EditEvent = (props) => {
 
   return (
     <>
-      <h1>Schedule an Event</h1>
-      <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
+      <h1 className='event-add-edit-header'>Schedule an Event</h1>
+      <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}className='event-add-edit-form'>
         <div>
           <label htmlFor="name-input">Name Your Event</label>
           <input
@@ -36,18 +37,23 @@ const EditEvent = (props) => {
             required
           />
         </div>
-        {/* <div> */}
-          {/* <label htmlFor="brewery-input">Which brewery do you want to go to?</label> */}
-          {/* final version will be used a select input that has all the breweries listed */}
-          {/* <input
+        <div>
+          <label htmlFor="brewery-select">Which brewery do you want to go to? (Based on your current location)</label>
+          <select
             type="text"
-            id='brewery-input'
+            id='brewery-select'
             name='brewery'
             value={formData.brewery}
             onChange={handleChange}
             required
-          /> */}
-        {/* </div> */}
+          >
+            {props.breweries?.map(brewery => 
+              <option key={brewery.id} value={brewery.id}>
+                {brewery.name}
+              </option>
+            )}
+          </select>
+        </div>
         <div>
           <label htmlFor="timeDate-input">When do you want to schedule this event?</label>
           <input
@@ -57,6 +63,15 @@ const EditEvent = (props) => {
             value={formData.timeDate}
             onChange={handleChange}
             required
+          />
+        </div>
+        <div>
+          <label htmlFor="description-input">Write a description about your event:</label>
+          <textarea
+            id='description-input'
+            name='description'
+            value={formData.description}
+            onChange={handleChange}
           />
         </div>
         <div>

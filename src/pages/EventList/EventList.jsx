@@ -1,14 +1,10 @@
 import Event from "../../components/EventCard/EventCard";
-import * as eventService from "../../services/eventService";
-import { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
-
 
 const EventList = ({ events }) => {
 
   return (
     <>
-      <h1>This is the event list</h1>
+      <h1 className="events-header">Events:</h1>
       <div className='events-main'>
         {events.length ? 
           <div className='event-container'>

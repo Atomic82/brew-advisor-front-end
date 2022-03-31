@@ -1,14 +1,15 @@
-
-
-const ReviewCard = (props) => {
-  
+const ReviewCard = ({ brewery, reviews }) => {
+  const breweryReviews = reviews.filter(review => review.brewery === brewery.id)
+  console.log(breweryReviews)
   return ( 
     <>
-      <h2>
-        What patrons think:
-      </h2>
+      {breweryReviews.map(review => 
+        <div key={review._id}>
+          {review.comment}
+        </div>
+      )}
     </>
-   );
+  );
 }
- 
+
 export default ReviewCard;
