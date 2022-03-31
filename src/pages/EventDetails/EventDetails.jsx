@@ -31,6 +31,7 @@ const EventDetails = ({ handleDeleteEvent, user }) => {
           />
           <h2>This event is being held at {event.brewery.name} and is hosted by {event.owner[0].name}</h2>
           <h2>this event will be occuring on {event.timeDate}</h2>
+          <h3>{event.description}</h3>
           {user.profile === event.owner[0]?._id ?
             <div className="edit-delete-container">
               <Link

@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation }) => {
+const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation, breweries }) => {
   const formElement = useRef()
   const [formData, setFormData] = useState({
     location: '',
   })
   const [validForm, setValidForm] = useState(false)
-  const navigate = useNavigate()
 
   useEffect(() => {
     formElement.current?.checkValidity() ?
@@ -19,9 +18,8 @@ const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation }) =
   }
   const handleSubmit = async evt => {
     evt.preventDefault()
-    navigate('/breweries')
     await handleChangeSetLocation(formData)
-    setFormData({location: ''})
+    setFormData({ location: '' })
   }
 
   return (
@@ -35,38 +33,21 @@ const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation }) =
             <li><Link to="/changePassword">Change Password</Link></li>
             <li><Link to="/breweries">Breweries</Link></li>
             <li><Link to="/events">Events</Link></li>
-            <li><Link to="/new">Make a new Event?</Link></li>
+            {breweries.length ? <li><Link to="/new">Make a new Event?</Link></li> : <></> }
           </ul>
-          {userLocation.location ?
-            <div>
+          <div>
+            {userLocation.location ?
               <p>Location set to {userLocation.location}</p>
-              <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="location-input">Change your location :</label>
-                  <input
-                    type="text"
-                    id='location-input'
-                    name='location'
-                    value={formData.location}
-                    onChange={handleChange}
-                    placeholder='Washington, DC or 20001'
-                    required
-                  />
-                </div>
-                <div>
-                  <button
-                    type='submit'
-                    disabled={!validForm}
-                  >
-                    Set Location
-                  </button>
-                </div>
-              </form>
-            </div>
-            :
+              :
+              <p>Please set a location</p>
+            }
             <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="location-input">Set your location:</label>
+                {userLocation.location ?
+                  <label htmlFor="location-input">Change your location :</label>
+                  :
+                  <label htmlFor="location-input">Set your location:</label>
+                }
                 <input
                   type="text"
                   id='location-input'
@@ -86,7 +67,7 @@ const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation }) =
                 </button>
               </div>
             </form>
-          }
+          </div>
         </nav>
         :
         <nav>
@@ -94,57 +75,40 @@ const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation }) =
             <li><Link to="/login">Log In</Link></li>
             <li><Link to="/signup">Sign Up</Link></li>
             <li><Link to="/breweries">Breweries</Link></li>
-            {userLocation.location ?
-              <div>
-                <p>Location set to {userLocation.location}</p>
-                <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
-                  <div>
-                    <label htmlFor="location-input">Change your location :</label>
-                    <input
-                      type="text"
-                      id='location-input'
-                      name='location'
-                      value={formData.location}
-                      onChange={handleChange}
-                      placeholder='Washington, DC or 20001'
-                      required
-                    />
-                  </div>
-                  <div>
-                    <button
-                      type='submit'
-                      disabled={!validForm}
-                    >
-                      Set Location
-                    </button>
-                  </div>
-                </form>
-              </div>
-              :
-              <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="location-input">Set your location:</label>
-                  <input
-                    type="text"
-                    id='location-input'
-                    name='location'
-                    value={formData.location}
-                    onChange={handleChange}
-                    placeholder='Washington, DC or 20001'
-                    required
-                  />
-                </div>
-                <div>
-                  <button
-                    type='submit'
-                    disabled={!validForm}
-                  >
-                    Set Location
-                  </button>
-                </div>
-              </form>
-            }
           </ul>
+          <div>
+            {userLocation.location ?
+              <p>Location set to {userLocation.location}</p>
+              :
+              <p>Please set a location</p>
+            }
+            <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
+              <div>
+                {userLocation.location ?
+                  <label htmlFor="location-input">Change your location :</label>
+                  :
+                  <label htmlFor="location-input">Set your location:</label>
+                }
+                <input
+                  type="text"
+                  id='location-input'
+                  name='location'
+                  value={formData.location}
+                  onChange={handleChange}
+                  placeholder='Washington, DC or 20001'
+                  required
+                />
+              </div>
+              <div>
+                <button
+                  type='submit'
+                  disabled={!validForm}
+                >
+                  Set Location
+                </button>
+              </div>
+            </form>
+          </div>
         </nav>
       }
     </>
