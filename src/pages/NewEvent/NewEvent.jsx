@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 const NewEvent = (props) => {
   const [formData, setFormData] = useState({ //Edit this to reflect the event model in the backend if things are added/removed to it
     name: '',
-    brewery: props.breweries[0]._id,
+    brewery: props.breweries[0].id,
     timeDate: '',
     description: '',
   })

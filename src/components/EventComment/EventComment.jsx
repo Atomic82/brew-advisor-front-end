@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 
 const EventComment = ({ user, handleAddEventComment, event }) => {
+  console.log("Event: ", event)
   const formElement = useRef()
   const [formData, setFormData] = useState({
     owner: user.name,
@@ -16,7 +17,7 @@ const EventComment = ({ user, handleAddEventComment, event }) => {
   }
   const handleSubmit = evt => {
     evt.preventDefault()
-    handleAddEventComment(formData, event.id)
+    handleAddEventComment(formData)
     setFormData({
       owner: user.name,
       comment: '',

@@ -52,8 +52,9 @@ async function update(event) {
   }
 }
 
-function addComment(comment) {
-  return fetch(`${BASE_URL}/addComment`, {
+function addComment(comment, event) {
+  console.log("Event: ", event)
+  return fetch(`${BASE_URL}/${event._id}/comments`, {
     method: "POST",
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`,
