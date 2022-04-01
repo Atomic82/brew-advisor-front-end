@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 
 const EventComment = ({ user, handleAddEventComment, event }) => {
-  console.log("Event: ", event)
   const formElement = useRef()
   const [formData, setFormData] = useState({
     owner: user.name,
@@ -42,7 +41,7 @@ const EventComment = ({ user, handleAddEventComment, event }) => {
         />
         <div className='add-btn'>
           <button 
-            className='btn'
+            className='btn btn-success'
             type='submit'
             disabled={!validForm}
           >

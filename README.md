@@ -36,21 +36,24 @@ Favicon:
 # Technologies Used🍺
 ---- 
 
-<a href="a"><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/Bootstrap-563D7C?style=flat&logo=bootstrap&logoColor=white">
+<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=flat&logo=mongodb&logoColor=white">
+<img src="https://img.shields.io/badge/Express.js-404D59?style=flat&logo=express&logoColor=white">
+<img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB"/>
+<img src="https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white">
+<img src="https://img.shields.io/badge/Mongoose-880000?style=flat">
+<img src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white">
+
+----
+APIs:
+
+[Yelp API](https://www.yelp.com/developers/documentation/v3)
 
 
-<a href="a"><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/></a>
-
-
-<a href="a"><img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"/></a>
-
-
-<a href="a"><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/></a>
-
-<a href="a"><img src="https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white"/></a>
-
-
-# Credits🍺
+# Collaborators🍺
 ---- 
 
 https://github.com/RohanPNaher 
@@ -62,7 +65,14 @@ https://github.com/Jana-P1
 https://github.com/Atomic82
 
 
+# Credits🍺
+---- 
+
+* General Assembly
+* Yelp
+
 # Stretch Goals🍺
+----
 * Users can add beers or other items to a brewery's page to show their offerings. 
 * Adding the ability to set profile pictures for users.
 * Adding the ability for users to click a button on an event page to show that they are attending.

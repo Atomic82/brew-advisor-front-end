@@ -53,7 +53,6 @@ async function update(event) {
 }
 
 function addComment(comment, event) {
-  console.log("Event: ", event)
   return fetch(`${BASE_URL}/${event._id}/comments`, {
     method: "POST",
     headers: {
