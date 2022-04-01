@@ -1,11 +1,22 @@
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 import EventComment from "../../components/EventComment/EventComment";
+import * as eventService from '../../services/eventService'
 
-const EventDetails = ({ handleDeleteEvent, user }) => {
+const EventDetails = ({ handleDeleteEvent, user
+ }) => {
   const location = useLocation()
+  const [addComment, setAddComment] = useState([])
   const event = location.state.event
   const brewery = event.brewery
   let date = new Date(event.timeDate).toLocaleString()
+
+  const handleAddEventComment = comment => {
+    eventService.addComment(comment, event)
+    .then(updatedEventWithComment => {
+      setAddComment(updatedEventWithComment)
+    }) 
+  }
 
   return (
     <>
@@ -57,9 +68,13 @@ const EventDetails = ({ handleDeleteEvent, user }) => {
           </div>
         }
         <Link to='/events'>Go back to All Events</Link>
-        <EventComment />
+        <EventComment 
+          user={user}
+          handleAddEventComment={handleAddEventComment}
+          event={event} 
+        />
       </div>
-    </>
+      </>
   );
 }
 

@@ -5,7 +5,7 @@ const NewReview = (props) => {
   const [formData, setFormData] = useState({
     comment: '',
     brewery: props.brewery.name,
-    owner: props.user
+    owner: props.user.name
   })
   const [validForm, setValidForm] = useState(false)
   
@@ -42,7 +42,7 @@ const NewReview = (props) => {
           onChange={handleChange}
           required 
         />
-        <div className="add-review">
+        <div className="add-btn">
           <button
             className='btn btn-success'
             type='submit'

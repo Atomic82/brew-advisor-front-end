@@ -12,6 +12,7 @@ const ReviewCard = ({ brewery, reviews }) => {
       {breweryReviews.map(review => 
         <div key={review._id}>
           {review.comment}
+          {review.name}
         </div>
       )}
     </>

@@ -14,7 +14,7 @@ const Profiles = (props) => {
 
   return (
     <>
-      <h1>Hello. Here is a list of all the profiles.</h1>
+      <h1>BrewAdvisor Patrons</h1>
       <>
         {profiles.length ?
           <div className="profile-list">

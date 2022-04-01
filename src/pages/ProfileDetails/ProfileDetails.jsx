@@ -5,8 +5,10 @@ import Profile from '../../components/Profile/Profile'
 const ProfileDetails = (props) => {
   return ( 
     <>
-    <div>
+    <div className='profile'>
       <Profile key={props.profile.id} profile={props.profile} />
+    </div>
+    <div className='link'>
       <Link to="/profiles">Back to all profiles</Link>
     </div>
     </>

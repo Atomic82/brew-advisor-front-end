@@ -52,9 +52,23 @@ async function update(event) {
   }
 }
 
+function addComment(comment, event) {
+  console.log("Event: ", event)
+  return fetch(`${BASE_URL}/${event._id}/comments`, {
+    method: "POST",
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(comment)
+  })
+  .then(res => res.json())
+}
+
 export {
   create,
   getAll,
   deleteOne,
-  update
+  update,
+  addComment
 }
