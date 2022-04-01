@@ -55,8 +55,11 @@ const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation, bre
                 </ul>
               </li>
               <li className='nav-item'><Link className='nav-link' to="/breweries">Breweries</Link></li>
-              <li className='nav-item'><Link className='nav-link' to="/events">Events</Link></li>
-              {(breweries.length, user) && <li><Link className='nav-link' to="/new">New Event?</Link></li>}
+              {user && <>
+
+                <li className='nav-item'><Link className='nav-link' to="/events">Events</Link></li>
+                {breweries.length && <li><Link className='nav-link' to="/new">New Event?</Link></li>}
+              </>}
             </ul>
             <form className='d-flex' autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
               <div className='container-fluid d-flex form-container'>

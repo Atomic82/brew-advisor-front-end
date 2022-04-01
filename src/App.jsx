@@ -42,7 +42,7 @@ const App = () => {
     .then(allReviews => {
       setReviews(allReviews)
     })
-  }, [])
+  }, [user, breweries])
   
   const handleChangeSetLocation = locationValue => {
     // navigate('/')
