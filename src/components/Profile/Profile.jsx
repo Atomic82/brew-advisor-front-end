@@ -4,18 +4,7 @@ const Profile = (props) => {
     <div className='profile-container'>
       <h1>{props.profile.name}</h1>
     </div>
-    {/* <div className='favorites'>
-      <h2>Favorite Breweries</h2>
-      {props.profile.favorites.length ?
-        <ul>
-        {props.profile.favorites.map(favorite => {
-          <li key={favorite.id}>{favorite}</li>
-        })}
-        </ul>
-        :
-        <p>No favorite breweries</p>
-      }
-    </div> */}
+    
     {/* <div className='events'>
       <h2>Brewery Meet Ups</h2>
       {props.profile.events.length ?

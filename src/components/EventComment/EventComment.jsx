@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 
-const EventComment = ({ user, handleAddEventComment, comment }) => {
+const EventComment = ({ user, handleAddEventComment, event }) => {
   const formElement = useRef()
   const [formData, setFormData] = useState({
     owner: user.name,
@@ -11,12 +11,12 @@ const EventComment = ({ user, handleAddEventComment, comment }) => {
     formElement.current.checkValidity() ? setValidForm(true) : setFormData(false)
   }, [formData])
 
-  const handleChange = event => {
-    setFormData({...formData, [event.target.name] : event.target.value})
+  const handleChange = evt => {
+    setFormData({...formData, [evt.target.name] : evt.target.value})
   }
-  const handleSubmit = event => {
-    event.preventDefault()
-    handleAddEventComment(formData)
+  const handleSubmit = evt => {
+    evt.preventDefault()
+    handleAddEventComment(formData, event.id)
     setFormData({
       owner: user.name,
       comment: '',
@@ -44,7 +44,6 @@ const EventComment = ({ user, handleAddEventComment, comment }) => {
             className='btn'
             type='submit'
             disabled={!validForm}
-            onClick={() => handleAddEventComment(comment)}
           >
             Add Comment
           </button>

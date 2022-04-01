@@ -59,7 +59,8 @@ const EventDetails = ({ handleDeleteEvent, user, handleAddEventComment }) => {
         <Link to='/events'>Go back to All Events</Link>
         <EventComment 
           user={user}
-          handleAddEventComment={handleAddEventComment} 
+          handleAddEventComment={handleAddEventComment}
+          event={event} 
         />
       </div>
       </>
