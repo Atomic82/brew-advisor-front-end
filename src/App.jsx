@@ -26,6 +26,7 @@ const App = () => {
   const [reviews, setReviews] = useState({})
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState({})
+  const [addComments, setAddComments] = ([])
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -110,6 +111,12 @@ const App = () => {
         setReviews([...reviews, newReview])
       })
   }
+  const handleAddEventComment = comment => {
+    eventService.addComment(comment)
+    .then(newComment => {
+      setEvents(newComment)
+    })
+  }
 
   return (
     <>
@@ -155,6 +162,7 @@ const App = () => {
           element={<EventDetails
             handleDeleteEvent={handleDeleteEvent}
             user={user}
+            handleAddEventComment={handleAddEventComment}
           />}
         />
         <Route

@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import EventComment from "../../components/EventComment/EventComment";
 
-const EventDetails = ({ handleDeleteEvent, user }) => {
+const EventDetails = ({ handleDeleteEvent, user, handleAddEventComment }) => {
   const location = useLocation()
   const event = location.state.event
   const brewery = event.brewery
@@ -54,7 +54,10 @@ const EventDetails = ({ handleDeleteEvent, user }) => {
           </div>
         }
         <Link to='/events'>Go back to All Events</Link>
-        <EventComment />
+        <EventComment 
+          user={user}
+          handleAddEventComment={handleAddEventComment} 
+        />
       </>
 
     </>
