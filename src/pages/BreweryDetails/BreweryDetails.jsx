@@ -21,7 +21,7 @@ const BreweryDetails = ({ handleAddReview, user, reviews }) => {
         </div>
         <p className="brewery-phone">{brewery.display_phone}</p>
         <div className="add-favorite">
-          <button className="btn">
+          <button className="btn btn-primary">
             Favorite brewery
           </button>
         </div>
