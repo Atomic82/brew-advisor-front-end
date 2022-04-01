@@ -4,7 +4,6 @@ const EventList = ({ events }) => {
 
   return (
     <>
-      <h1 className="events-header">Events:</h1>
       <div className='events-main'>
         {events.length ? 
           <div className='event-container'>

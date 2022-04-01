@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 
-
 const ReviewCard = ({ brewery, reviews }) => {
   const [breweryReviews, setBreweryReviews] = useState([])
   

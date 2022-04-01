@@ -44,6 +44,7 @@ const NewReview = (props) => {
         />
         <div className="add-review">
           <button
+            className='btn btn-success'
             type='submit'
             disabled={!validForm}
           >
