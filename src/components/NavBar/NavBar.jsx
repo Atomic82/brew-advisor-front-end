@@ -24,32 +24,52 @@ const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation, bre
 
   return (
     <>
-      {user ?
-        <nav>
-          <ul>
-            <li>Welcome, {user.name}</li>
-            <li><Link to="/profiles">Profiles</Link></li>
-            <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
-            <li><Link to="/changePassword">Change Password</Link></li>
-            <li><Link to="/breweries">Breweries</Link></li>
-            <li><Link to="/events">Events</Link></li>
-            {breweries.length ? <li><Link to="/new">Make a new Event?</Link></li> : <></>}
-          </ul>
-          <div>
-            {userLocation.location ?
-              <p>Location set to {userLocation.location}</p>
-              :
-              <p>Please set a location</p>
-            }
-            <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
-              <div>
-                {userLocation.location ?
-                  <label htmlFor="location-input">Change your location :</label>
-                  :
-                  <label htmlFor="location-input">Set your location:</label>
-                }
+      <nav className='navbar fixed-top navbar-expand-sm'>
+        <div className='container-fluid'>
+          <Link to="/" className='navbar-brand'><img className="logo" src="https://i.imgur.com/o9LbJPR.png" alt="ba-logo" />
+            {user && <>Welcome, {user.name}!</>}
+          </Link>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon">...</span>
+          </button>
+          <div className='collapse navbar-collapse d-flex nav-links-container' id='navbarNavDropdown'>
+            <ul className='navbar-nav'>
+              <li className="nav-item dropdown">
+                <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Profiles
+                </Link>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  {user ?
+                    <>
+                      <li><Link className="dropdown-item" to="/profiles">All Profiles</Link></li>
+                      <li><hr className="dropdown-divider" /></li>
+                      <li><Link className="dropdown-item" to="/changePassword">Change Password?</Link></li>
+                      <li><Link className="dropdown-item" to="" onClick={handleLogout}>Logout?</Link></li>
+                    </>
+                    :
+                    <>
+                      <li><Link className="dropdown-item" to="/login">Log In</Link></li>
+                      <li><Link className="dropdown-item" to="/signup">Sign Up</Link></li>
+                    </>
+                  }
+                </ul>
+              </li>
+              <li className='nav-item'><Link className='nav-link' to="/breweries">Breweries</Link></li>
+              <li className='nav-item'><Link className='nav-link' to="/events">Events</Link></li>
+              {(breweries.length, user) && <li><Link className='nav-link' to="/new">New Event?</Link></li>}
+            </ul>
+            <form className='d-flex' autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
+              <div className='container-fluid d-flex form-container'>
+                <div>
+                  {userLocation.location ?
+                    <label htmlFor="location-input">Location currently set to {userLocation.location}</label>
+                    :
+                    <label htmlFor="location-input">Set your location: </label>
+                  }
+                </div>
                 <input
                   type="text"
+                  className='form-control me-2 crunch nav-location-input'
                   id='location-input'
                   name='location'
                   value={formData.location}
@@ -57,60 +77,18 @@ const NavBar = ({ user, handleLogout, userLocation, handleChangeSetLocation, bre
                   placeholder='Washington, DC or 20001'
                   required
                 />
-              </div>
-              <div>
                 <button
                   type='submit'
+                  className='btn btn-primary crunch location-button'
                   disabled={!validForm}
                 >
-                  Set Location
+                  Set
                 </button>
               </div>
             </form>
           </div>
-        </nav>
-        :
-        <nav>
-          <ul>
-            <li><Link to="/login">Log In</Link></li>
-            <li><Link to="/signup">Sign Up</Link></li>
-            <li><Link to="/breweries">Breweries</Link></li>
-          </ul>
-          <div>
-            <form autoComplete='off' ref={formElement} onSubmit={handleSubmit} className='location-form'>
-              <div>
-                {userLocation.location && <p className='location-indicator'>Location set to {userLocation.location}</p>}
-                <div>
-                  {userLocation.location ?
-                    <label htmlFor="location-input" className='location-label'>Change your location:</label>
-                    :
-                    <label htmlFor="location-input" className='location-label'>Please set your location to find local breweries:</label>
-                  }
-                  <input
-                    type="text"
-                    id='location-input'
-                    className='location-input'
-                    name='location'
-                    value={formData.location}
-                    onChange={handleChange}
-                    placeholder='Washington, DC or 20001'
-                    required
-                  />
-                </div>
-                <div>
-                  <button
-                    className='location-submit-btn'
-                    type='submit'
-                    disabled={!validForm}
-                  >
-                    Set Location
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </nav>
-      }
+        </div>
+      </nav>
     </>
   )
 }

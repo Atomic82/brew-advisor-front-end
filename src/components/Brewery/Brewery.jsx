@@ -9,7 +9,7 @@ const Brewery = ({ brewery }) => {
         className='brewery-link'
       >
         <div>
-          <img src={brewery.image_url} alt="" style={{"maxHeight":"400px",}} className="brewery-link-img" />
+          <img src={brewery.image_url} alt="" className="brewery-link-img" />
           <p className="brewery-link-text">Go to {brewery.name}</p>
         </div>
       </Link>

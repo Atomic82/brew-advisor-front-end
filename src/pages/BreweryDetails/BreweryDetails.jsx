@@ -13,7 +13,7 @@ const BreweryDetails = ({ handleAddReview, user, reviews }) => {
     <>
       <div className="brewery-main">
         <h1>{brewery.name}</h1>
-        <img src={brewery.image_url} alt={brewery.alias} className="brewery-img" />
+        <img src={brewery.image_url} alt={brewery.alias} className="details-img" />
         <h3 className="brewery-rating" >Rating: {brewery.rating}</h3>
         <div className="brewery-address">
           <p>{brewery.location.display_address[0]}<br />
@@ -21,7 +21,7 @@ const BreweryDetails = ({ handleAddReview, user, reviews }) => {
         </div>
         <p className="brewery-phone">{brewery.display_phone}</p>
         <div className="add-favorite">
-          <button>
+          <button className="btn">
             Favorite brewery
           </button>
         </div>

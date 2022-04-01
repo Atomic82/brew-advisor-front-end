@@ -76,6 +76,7 @@ const EditEvent = (props) => {
         <div>
           <button
             type='submit'
+            className='btn btn-success'
             disabled={!validForm}
           >
             Save Changes to Event

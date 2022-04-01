@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 
-const EventComment = ({ user, handleAddEventComment }) => {
+const EventComment = ({ user, handleAddEventComment, comment }) => {
   const formElement = useRef()
   const [formData, setFormData] = useState({
     owner: user.name,
@@ -29,9 +29,10 @@ const EventComment = ({ user, handleAddEventComment }) => {
         ref={formElement} 
         onSubmit={handleSubmit}
       >
-        <label htmlFor="comment-input">Comment: </label>
+        <label htmlFor="comment">
+          Comment: 
+        </label>
         <textarea 
-          type="text"
           name='comment'
           className="event-comment-form"
           value={formData.comment}
@@ -43,6 +44,7 @@ const EventComment = ({ user, handleAddEventComment }) => {
             className='btn'
             type='submit'
             disabled={!validForm}
+            onClick={() => handleAddEventComment(comment)}
           >
             Add Comment
           </button>

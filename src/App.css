@@ -23,7 +23,7 @@
     }
     
     html * {
-        font-size: 1.5rem !important;
+        font-size: 1.5rem ;
         color: #000 !important;
     }
     
@@ -34,6 +34,7 @@
         height: 100vh;
         width: 100vw;
         font-family: 'Poppins', sans-serif;
+        margin-top: 128px;
         /* height: 100vh; */
     }
 
@@ -89,22 +90,22 @@ profile-container */
     /* Nav */
     
     nav {
-        position: absolute;
+        /* position: absolute;
         display: flex;
-        flex-direction: row;
-        width: 100vw;
-        height: 5vh;
+        /* flex-direction: row; */
+        /* width: 100vw; */
+        /* height: 5vh;
         left: 0px;
-        top: 0px;
+        top: 0px;  */
         background: #307155;
-        border: 2px solid #000000;
+        border-bottom: 2px solid #000000;
     }
 
-    p{
+    /* p{
         width: 10vw;
         display: flex;
         justify-content: center;
-    }
+    } */
 
     .reviews {
     display: flex;
@@ -132,4 +133,45 @@ profile-container */
         top: 944px;
         background: #fa0000;
         border: 2px solid #000000;
+    }
+
+    .navbar {
+        height: 100px;
+    }
+    .logo {
+        max-width: 75px;
+        max-height: 75px;
+    }
+
+    .nav-links-container {
+        justify-content: space-between;
+    }
+
+    .form-container{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .crunch {
+        height: 50px;
+    }
+
+    .nav-location-input {
+        width: 500px;
+    }
+
+    .landing-img {
+        height: 300px;
+    }
+
+    .breweries-main, .brewery-main, .events-main, .event-details-container {
+        text-align: center;
+    }
+
+    .brewery-link-img, .event-link-img {
+        max-height: 300px;
+    }
+
+    .details-img {
+        max-height: 400px;
     }

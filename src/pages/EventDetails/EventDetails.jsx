@@ -9,11 +9,11 @@ const EventDetails = ({ handleDeleteEvent, user, handleAddEventComment }) => {
 
   return (
     <>
-
-      <>
+      <div className='event-details-container'>
         <div className='event-details'>
           <h1>{event.name}</h1>
           <img
+            className="details-img"
             src={brewery.photos[1] ? brewery.photos[1] : brewery.photos[0]}
             alt={brewery.name}
           />
@@ -44,9 +44,12 @@ const EventDetails = ({ handleDeleteEvent, user, handleAddEventComment }) => {
               to='/edit'
               state={{ event }}
             >
-              Edit the event
+              <button className="btn btn-warning">
+                Edit the event
+              </button>
             </Link>
             <button
+              className="btn btn-danger"
               onClick={() => handleDeleteEvent(event._id)}
             >
               Delete event
@@ -58,9 +61,8 @@ const EventDetails = ({ handleDeleteEvent, user, handleAddEventComment }) => {
           user={user}
           handleAddEventComment={handleAddEventComment} 
         />
+      </div>
       </>
-
-    </>
   );
 }
 

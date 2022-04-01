@@ -25,8 +25,8 @@ const App = () => {
   const [events, setEvents] = useState([])
   const [reviews, setReviews] = useState({})
   const [user, setUser] = useState(authService.getUser())
+  const [addComment, setAddComment] = useState([])
   const [profile, setProfile] = useState({})
-  const [addComments, setAddComments] = ([])
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -113,9 +113,9 @@ const App = () => {
   }
   const handleAddEventComment = comment => {
     eventService.addComment(comment)
-    .then(newComment => {
-      setEvents(newComment)
-    })
+    .then(updatedEventWithComment => {
+      setEvents(updatedEventWithComment)
+    }) 
   }
 
   return (
