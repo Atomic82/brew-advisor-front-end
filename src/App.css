@@ -107,13 +107,6 @@ profile-container */
         justify-content: center;
     } */
 
-    .reviews {
-    display: flex;
-    justify-content: center;
-    height: 10vh;
-    width: 50vw;
-    }
-
     /* Picture */
     
     pic {
