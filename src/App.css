@@ -23,7 +23,7 @@
     }
     
     html * {
-        font-size: 1.5rem !important;
+        font-size: 1.5rem ;
         color: #000 !important;
     }
     
@@ -34,6 +34,7 @@
         height: 100vh;
         width: 100vw;
         font-family: 'Poppins', sans-serif;
+        margin-top: 128px;
         /* height: 100vh; */
     }
 
@@ -132,4 +133,26 @@ profile-container */
         top: 944px;
         background: #fa0000;
         border: 2px solid #000000;
+    }
+
+    .logo {
+        max-width: 100px;
+        max-height: 100px;
+    }
+
+    .nav-links-container {
+        justify-content: space-between;
+    }
+
+    .form-container{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .crunch {
+        height: 50px;
+    }
+
+    .nav-location-input {
+        width: 500px;
     }
