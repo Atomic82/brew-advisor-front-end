@@ -2,7 +2,8 @@ const Profile = (props) => {
   return ( 
     <>
     <div className='profile-container'>
-    <h1>{props.profile.name}</h1>
+      <h1>{props.profile.name}</h1>
+    </div>
     {/* <div className='favorites'>
       <h2>Favorite Breweries</h2>
       {props.profile.favorites.length ?
@@ -32,24 +33,22 @@ const Profile = (props) => {
     <div className='reviews'>
       <h2>Brewery Reviews</h2>
       {props.profile.reviews.length ?
-        <ul>
+        <div className="profile-reviews">
           {props.profile.reviews?.map(review => 
-            <li key={review._id}>
+            <div key={review._id}>
               {review.brewery}
               {review.comment}
-            </li>
+            </div>
           )}
-        </ul>
+        </div>
         :
         <p>No reviews</p>
       }
-
-  
     </div>
     
 
 
-    </div>
+    
     </>
 );
 }
