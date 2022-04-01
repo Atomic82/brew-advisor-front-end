@@ -135,9 +135,12 @@ profile-container */
         border: 2px solid #000000;
     }
 
+    .navbar {
+        height: 100px;
+    }
     .logo {
-        max-width: 100px;
-        max-height: 100px;
+        max-width: 75px;
+        max-height: 75px;
     }
 
     .nav-links-container {
@@ -155,4 +158,20 @@ profile-container */
 
     .nav-location-input {
         width: 500px;
+    }
+
+    .landing-img {
+        height: 300px;
+    }
+
+    .breweries-main, .brewery-main, .events-main, .event-details-container {
+        text-align: center;
+    }
+
+    .brewery-link-img, .event-link-img {
+        max-height: 300px;
+    }
+
+    .details-img {
+        max-height: 400px;
     }

@@ -78,6 +78,7 @@ const NewEvent = (props) => {
         <div>
           <button
             type='submit'
+            className='btn btn-success'
             disabled={!validForm}
           >
             Schedule Event
