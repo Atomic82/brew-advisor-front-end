@@ -67,6 +67,22 @@ const EventDetails = ({ handleDeleteEvent, user
             </button>
           </div>
         }
+        
+        <div className="comment-container">
+          {event.comments.length ?
+          <div className="comments">
+            {event.comments.map(comment => 
+              <div key={event.comments.id}>
+                <p>{comment.comment}</p>
+                <p>{comment.owner.name}</p>
+              </div>
+            )}
+          </div>
+            :
+          <p>No comments yet</p>
+          }
+        </div>
+
         <Link to='/events'>Go back to All Events</Link>
         <EventComment 
           user={user}
